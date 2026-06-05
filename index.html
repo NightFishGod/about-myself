@@ -912,6 +912,8 @@
             <span class="card-tag">自动化</span>
             <span class="card-tag">AI 协同开发</span>
             <span class="card-tag">3D设计</span>
+            <span class="card-tag">语音TTS</span>
+            <span class="card-tag">知识蒸馏</span>
           </div>
         </div>
       </div>
@@ -1059,6 +1061,10 @@
           <div class="skill-pills">
             <span class="skill-pill hot">Skill工作流设计</span>
             <span class="skill-pill hot">数字分身构建</span>
+            <span class="skill-pill hot">本地TTS(VoxCPM 2)</span>
+            <span class="skill-pill hot">声音克隆</span>
+            <span class="skill-pill">Vibe Coding</span>
+            <span class="skill-pill">知识蒸馏</span>
             <span class="skill-pill">CC-Switch配置</span>
             <span class="skill-pill">腾讯云</span>
             <span class="skill-pill">微云备份</span>
@@ -1114,8 +1120,10 @@
             </div>
             <div class="tl-role">AI 工具深度用户 · 个人项目实践者</div>
             <div class="tl-desc">
-              在校期间借助 借助 AI 完成多个个人项目：港爱旅游微信小程序、PyWxDump 微信数据工具、
+              在校期间借助 AI 完成多个个人项目：港爱旅游微信小程序、PyWxDump 微信数据工具、
               个人电子简历网站等，实践了从需求到部署的完整流程。
+              2026 年进一步深化：基于 VoxCPM 2 构建 Marvis Vox 桌面语音助手（声音克隆+本地TTS），
+              用 Vibe Coding 开发 AI 知识蒸馏工具 v2.0（YAML评分+OCR识别+PyInstaller打包）。
               同时开展 AI 写作辅助副业，帮助多人完成本科论文润色与修改，形成标准化交付流程（马维斯+DeepSeek工具链）。
             </div>
             <div class="tl-tags">
@@ -1124,6 +1132,8 @@
               <span class="tl-tag">Python工具</span>
               <span class="tl-tag">AI写作辅助</span>
               <span class="tl-tag">在线部署</span>
+              <span class="tl-tag accent">VoxCPM 2 TTS</span>
+              <span class="tl-tag accent">知识蒸馏</span>
             </div>
           </div>
         </div>
@@ -1268,6 +1278,50 @@
             </div>
           </div>
         </div>
+
+        <div class="proj-card fade-up">
+          <div class="proj-card-inner">
+            <div class="proj-header">
+              <span class="proj-icon">🎙️</span>
+              <span class="proj-badge badge-ai">AI分身</span>
+            </div>
+            <div class="proj-name">Marvis Vox · 桌面AI语音助手</div>
+            <div class="proj-desc">
+              基于 VoxCPM 2 + RTX 3060 构建本地 TTS 语音助手，6 阶段研发历程、5 套自研脚本。
+              通过 bridge.py 文件监听架构实现文本到语音的实时桥接，搭配声音克隆技术实现自然中文语音合成。
+              经历 3 种方案 8 轮测试，最终落地为稳定可用的桌面级 AI 语音交互终端。
+            </div>
+            <div class="proj-footer">
+              <span class="proj-tag">VoxCPM 2</span>
+              <span class="proj-tag">PyTorch CUDA</span>
+              <span class="proj-tag">声音克隆</span>
+              <span class="proj-tag">本地TTS</span>
+              <span class="proj-tag">文件监听架构</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-card fade-up">
+          <div class="proj-card-inner">
+            <div class="proj-header">
+              <span class="proj-icon">🧠</span>
+              <span class="proj-badge badge-dev">工具</span>
+            </div>
+            <div class="proj-name">AI 知识蒸馏工具 v2.0</div>
+            <div class="proj-desc">
+              基于 Vibe Coding 理念，用 AI 协同开发的知识萃取工具。支持自动发现目录与手动指定双入口，
+              内置 YAML 动态评分算法与 OCR 截图识别，PyInstaller 打包为单文件 EXE。
+              实现从长文档到结构化笔记的一键转化，是 AI 辅助知识管理的工程化实践。
+            </div>
+            <div class="proj-footer">
+              <span class="proj-tag">Python</span>
+              <span class="proj-tag">PyInstaller</span>
+              <span class="proj-tag">Vibe Coding</span>
+              <span class="proj-tag">OCR识别</span>
+              <span class="proj-tag">YAML评分算法</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1277,7 +1331,7 @@
     <div class="container">
       <div class="stats-row fade-up">
         <div class="stat-card">
-          <div class="stat-num" style="color:var(--accent)">6+</div>
+          <div class="stat-num" style="color:var(--accent)">8+</div>
           <div class="stat-label">AI工具实战项目</div>
         </div>
         <div class="stat-card">
