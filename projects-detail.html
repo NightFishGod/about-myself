@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>项目详情 · 梁正俣</title>
+  <style>
+    :root {
+      --bg: #0d0f14;
+      --bg-card: #13161d;
+      --bg-card2: #191d27;
+      --border: rgba(255,255,255,0.07);
+      --border-hover: rgba(99,209,163,0.35);
+      --text: #e8eaf0;
+      --text-muted: #7a8090;
+      --text-dim: #4a5060;
+      --accent: #63d1a3;
+      --accent2: #5b8cff;
+      --accent3: #ff7b5e;
+      --font-head: 'Outfit', 'PingFang SC', 'Noto Sans SC', sans-serif;
+      --font-body: 'Inter', 'PingFang SC', 'Noto Sans SC', sans-serif;
+      --radius: 16px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 16px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(13, 15, 20, 0.8); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--font-head); font-weight: 700; font-size: 18px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .nav-back {
+      color: var(--text-muted); font-size: 13px; transition: color 0.2s; text-decoration: none;
+    }
+    .nav-back:hover { color: var(--accent); }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+    .page-hero { padding: 120px 0 60px; }
+    .page-title {
+      font-family: var(--font-head); font-size: clamp(32px, 5vw, 48px);
+      font-weight: 800; letter-spacing: -1.5px; margin-bottom: 12px;
+    }
+    .page-sub { color: var(--text-muted); font-size: 16px; max-width: 600px; margin-bottom: 48px; }
+
+    .project-nav {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 60px;
+    }
+    .project-nav a {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 8px; padding: 8px 16px; font-size: 13px;
+      color: var(--text-muted); text-decoration: none; transition: all 0.2s;
+    }
+    .project-nav a:hover { border-color: var(--border-hover); color: var(--text); }
+
+    .proj-section {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 40px; margin-bottom: 32px;
+    }
+    .proj-section:hover { border-color: var(--border-hover); }
+
+    .proj-header {
+      display: flex; align-items: flex-start; gap: 16px; margin-bottom: 24px;
+      padding-bottom: 24px; border-bottom: 1px solid var(--border);
+    }
+    .proj-icon { font-size: 36px; line-height: 1; }
+    .proj-meta { flex: 1; }
+    .proj-name {
+      font-family: var(--font-head); font-weight: 700; font-size: 24px; margin-bottom: 4px;
+    }
+    .proj-tagline { color: var(--text-muted); font-size: 14px; }
+    .proj-badge {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1px; padding: 4px 12px; border-radius: 20px;
+      background: rgba(99,209,163,0.12); color: var(--accent);
+      border: 1px solid rgba(99,209,163,0.25); white-space: nowrap;
+    }
+
+    .flow-title {
+      font-family: var(--font-head); font-weight: 600; font-size: 14px;
+      color: var(--accent); text-transform: uppercase; letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+    .flow-steps { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+    .flow-step {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: var(--bg-card2); border-radius: 10px; padding: 16px 20px;
+      border-left: 2px solid var(--accent);
+    }
+    .step-num {
+      min-width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(99,209,163,0.15); color: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 13px; font-family: var(--font-head);
+    }
+    .step-content strong { display: block; font-size: 14px; margin-bottom: 3px; }
+    .step-content span { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+
+    .tech-tags {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 28px;
+    }
+    .tech-tag {
+      font-size: 11px; background: var(--bg-card2); border: 1px solid var(--border);
+      border-radius: 5px; padding: 4px 10px; color: var(--text-dim);
+    }
+    .tech-tag.hl {
+      background: rgba(99,209,163,0.08); border-color: rgba(99,209,163,0.25); color: var(--accent);
+    }
+
+    .highlight-box {
+      background: var(--bg-card2); border: 1px solid var(--border);
+      border-radius: 10px; padding: 20px 24px; margin-bottom: 20px;
+    }
+    .highlight-box h4 {
+      font-family: var(--font-head); font-size: 14px; color: var(--accent2); margin-bottom: 8px;
+    }
+    .highlight-box p, .highlight-box li {
+      font-size: 13px; color: var(--text-muted); line-height: 1.8;
+    }
+    .highlight-box ul { padding-left: 18px; }
+
+    .screenshot {
+      max-width: 100%; border-radius: 10px; border: 1px solid var(--border); margin: 16px 0;
+    }
+
+    footer {
+      padding: 40px 0; text-align: center; color: var(--text-dim); font-size: 12px;
+      border-top: 1px solid var(--border); margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <span class="nav-logo">梁正俣 · 项目详情</span>
+  <a href="index.html" class="nav-back">&larr; 返回首页</a>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <h1 class="page-title">实战项目流程</h1>
+    <p class="page-sub">8 个 AI 工具实战项目，从需求到交付的完整记录。</p>
+    <div class="project-nav">
+      <a href="#p1">数字分身</a>
+      <a href="#p2">每日早报</a>
+      <a href="#p3">AI效果图</a>
+      <a href="#p4">微信小程序</a>
+      <a href="#p5">简历网站</a>
+      <a href="#p6">备份系统</a>
+      <a href="#p7">Marvis Vox</a>
+      <a href="#p8">知识蒸馏</a>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- P1: Night🐟 -->
+  <div class="proj-section" id="p1">
+    <div class="proj-header">
+      <span class="proj-icon">🐟</span>
+      <div class="proj-meta">
+        <div class="proj-name">Night🐟 数字分身系统</div>
+        <div class="proj-tagline">基于 WorkBuddy 的个人 AI 数字分身 · v4.11 · 持续迭代中</div>
+      </div>
+      <span class="proj-badge">AI分身</span>
+    </div>
+    <div class="tech-tags">
+      <span class="tech-tag hl">WorkBuddy Agent</span>
+      <span class="tech-tag hl">自动化脚本</span>
+      <span class="tech-tag">长期记忆</span>
+      <span class="tech-tag">Skill设计</span>
+      <span class="tech-tag">Cron调度</span>
+    </div>
+    <div class="flow-title">研发流程</div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="step-num">1</div>
+        <div class="step-content"><strong>需求定义</strong><span>设计数字分身的核心能力：每日记忆自动同步、对话历史归档、数字自我持续迭代。目标是将个人成长轨迹系统化沉淀。</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">2</div>
+        <div class="step-content"><strong>架构设计</strong><span>基于 WorkBuddy Agent 框架，设计 Skill 工作流体系。核心：night-3 自动化脚本（每日 17:30 触发），解决跨天对话归因技术难题。</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">3</div>
+        <div class="step-content"><strong>迭代优化</strong><span>经历 v1 到 v4.11 共 4 个大版本迭代，每次迭代优化记忆提取精度、对话归因准确性和自动化稳定性。</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">4</div>
+        <div class="step-content"><strong>运行验证</strong><span>长期运行验证记忆同步准确性，持续优化 Skill 设计，确保数字分身真正成为"了解我"的长期 AI 伙伴。</span></div>
+      </div>
+    </div>
+    <div class="highlight-box">
+      <h4>关键技术突破</h4>
+      <ul>
+        <li>跨天对话归因：通过时间戳 + 主题聚类，将分散在多个会话中的相关对话自动归并</li>
+        <li>长期记忆压缩：设计"对话摘要 + 关键事实"双层记忆结构，兼顾精度与存储效率</li>
+        <li>自动化同步链：night-3 脚本实现「触发→提取→归因→存储」全链路自动化</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- P2: 每日早报 -->
+  <div class="proj-section" id="p2">
+    <div class="proj-header">
+      <span class="proj-icon">📰</span>
+      <div class="proj-meta">
+        <div class="proj-name">每日早报自动化系统</div>
+        <div class="proj-tagline">每天 8:05 自动运行 · 运行 20+ 天零失败</div>
+      </div>
+      <span class="proj-badge" style="background:rgba(180,120,255,0.12);color:#b478ff;border-color:rgba(180,120,255,0.25)">自动化</span>
+    </div>
+    <div class="tech-tags">
+      <span class="tech-tag hl">Amap API</span>
+      <span class="tech-tag hl">多源数据聚合</span>
+      <span class="tech-tag hl">Cron调度</span>
+      <span class="tech-tag">价格监控</span>
+      <span class="tech-tag">Weather API</span>
+      <span class="tech-tag">Markdown</span>
+    </div>
+    <div class="flow-title">数据流架构</div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="step-num">1</div>
+        <div class="step-content"><strong>天气模块</strong><span>调用 Amap 天气 API 获取当日天气预报和生活指数，包括温度、降水概率、穿衣建议。</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">2</div>
+        <div class="step-content"><strong>价格监控模块</strong><span>多源交叉验证（ZOL / 京东 / 新浪），爬取 SSD 实时价格，异常波动自动标注。</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">3</div>
+        <div class="step-content"><strong>热搜聚合模块</strong><span>抓取微博热搜榜单 Top 10，去重排序后整合进早报。</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">4</div>
+        <div class="step-content"><strong>排版输出</strong><span>数据清洗后以 Markdown 格式生成统一早报，Cron 每日 8:05 自动触发推送。</span></div>
+      </div>
+    </div>
+    <div class="highlight-box">
+      <h4>稳定性保障</h4>
+      <ul>
+        <li>多源降级策略：单个数据源超时/异常时自动切换备用源，确保早报不中断</li>
+        <li>异常自动重试：API 调用失败自动重试 3 次，间隔递增（1s / 3s / 5s）</li>
+        <li>运行日志记录：每次运行生成结构化日志，便于问题追溯</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- P3: 入户门AI效果图 -->
+  <div class="proj-section" id="p3">
+    <div class="proj-header">
+      <span class="proj-icon">🚪</span>
+      <div class="proj-meta">
+        <div class="proj-name">入户门 AI 效果图生产线</div>
+        <div class="proj-tagline">ComfyUI SDXL · 6 种材质渲染 · 商业交付 50+ 张</div>
+      </div>
+      <span class="proj-badge" style="background:rgba(255,123,94,0.12);color:var(--accent3);border-color:rgba(255,123,94,0.25)">AI设计</span>
+    </div>
+    <div class="tech-tags">
+      <span class="tech-tag hl">ComfyUI SDXL</span>
+      <span class="tech-tag hl">材质渲染</span>
+      <span class="tech-tag hl">提示词工程</span>
+      <span class="tech-tag">Juggernaut XL</span>
+      <span class="tech-tag">RealVisXL</span>
+      <span class="tech-tag">LoRA</span>
+    </div>
+    <div class="flow-title">生产流水线</div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="step-num">1</div>
+        <div class="step-content"><strong>环境搭建</strong><span>RTX 3060 本地部署 ComfyUI + SDXL 模型（Juggernaut XL / RealVisXL），配置 GPU 加速推理环境。</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">2</div>
+        <div class="step-content"><strong>材质提示词库</strong><span>为贝壳木纹、白色岩板、海石纹肌理等 6 种入户门材质建立标准化提示词模板，覆盖不同光线和角度场景。</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">3</div>
+        <div class="step-content"><strong>工作流设计</strong><span>在 ComfyUI 中搭建稳定可复用的节点工作流，实现「输入产品底图 → 材质渲染 → 后期优化」全链路。</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">4</div>
+        <div class="step-content"><strong>批量交付</strong><span>单日可产出 10+ 张商业级效果图，累计产出 50+ 张，直接用于销售图册与博览会物料。</span></div>
+      </div>
+    </div>
+    <div class="highlight-box">
+      <h4>效率提升</h4>
+      <ul>
+        <li>交付周期：传统 3D 渲染 5-7 天 → AI 工作流 1 天内完成</li>
+        <li>成本节约：无需外部设计公司，一台 RTX 3060 本地完成</li>
+        <li>灵活迭代：客户反馈后 30 分钟内可出修改稿</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- P4: 港爱旅游小程序 -->
+  <div class="proj-section" id="p4">
+    <div class="proj-header">
+      <span class="proj-icon">✈️</span>
+      <div class="proj-meta">
+        <div class="proj-name">港爱旅游微信小程序</div>
+        <div class="proj-tagline">AI 协同开发 · 旅游服务平台 · 一人全栈</div>
+      </div>
+      <span class="proj-badge" style="background:rgba(91,140,255,0.12);color:var(--accent2);border-color:rgba(91,140,255,0.25)">小程序</span>
+    </div>
+    <div class="tech-tags">
+      <span class="tech-tag hl">微信小程序</span>
+      <span class="tech-tag hl">云开发</span>
+      <span class="tech-tag">WXML/WXSS/JS</span>
+      <span class="tech-tag">在线部署</span>
+    </div>
+    <div class="flow-title">开发流程</div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="step-num">1</div>
+        <div class="step-content"><strong>需求梳理</strong><span>定义旅游服务小程序的 MVP 功能：景点展示、路线规划、用户收藏，借助 AI 生成 PRD 初稿。</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">2</div>
+        <div class="step-content"><strong>前端搭建</strong><span>AI 协同生成 WXML 页面结构和 WXSS 样式，手动调试交互逻辑，实现完整的页面跳转流程。</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">3</div>
+        <div class="step-content"><strong>数据层</strong><span>使用微信云开发作为后端，实现数据存储、用户鉴权和内容管理，无需自建服务器。</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">4</div>
+        <div class="step-content"><strong>审核上线</strong><span>通过微信审核，正式上线运营，验证了 AI 协同开发在真实产品中的可行性。</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- P5: 个人简历网站 -->
+  <div class="proj-section" id="p5">
+    <div class="proj-header">
+      <span class="proj-icon">📄</span>
+      <div class="proj-meta">
+        <div class="proj-name">个人电子简历网站</div>
+        <div class="proj-tagline">AI 协同编程 · 深色科技风 · 纯静态部署</div>
+      </div>
+      <span class="proj-badge" style="background:rgba(91,140,255,0.12);color:var(--accent2);border-color:rgba(91,140,255,0.25)">网页</span>
+    </div>
+    <div class="tech-tags">
+      <span class="tech-tag hl">HTML/CSS/JS</span>
+      <span class="tech-tag hl">AI 协同编程</span>
+      <span class="tech-tag hl">GitHub Pages</span>
+      <span class="tech-tag">响应式设计</span>
+      <span class="tech-tag">动画交互</span>
+    </div>
+    <div class="flow-title">迭代历程</div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="step-num">1</div>
+        <div class="step-content"><strong>v1 初版</strong><span>借助 AI 生成基础 HTML 骨架，包含个人信息、技能、项目三板块，纯文本布局。</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">2</div>
+        <div class="step-content"><strong>v2 视觉升级</strong><span>设计深色科技风主题，引入 CSS 变量体系、渐变配色、噪声纹理背景、玻璃态卡片。</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">3</div>
+        <div class="step-content"><strong>v3 动画增强</strong><span>添加打字机效果（Hero 区域）、滚动渐现动画（Intersection Observer）、导航栏毛玻璃。</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">4</div>
+        <div class="step-content"><strong>v4 部署迭代</strong><span>持续补充项目内容和技能标签，通过 GitHub Pages 自动部署，每轮编辑 1 分钟内上线。</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- P6: 备份系统 -->
+  <div class="proj-section" id="p6">
+    <div class="proj-header">
+      <span class="proj-icon">☁️</span>
+      <div class="proj-meta">
+        <div class="proj-name">听雨眠备份系统</div>
+        <div class="proj-tagline">每日双次自动备份 · 成功率 97%+ · 本地+云端双重保护</div>
+      </div>
+      <span class="proj-badge" style="background:rgba(180,120,255,0.12);color:#b478ff;border-color:rgba(180,120,255,0.25)">系统</span>
+    </div>
+    <div class="tech-tags">
+      <span class="tech-tag hl">自动化调度</span>
+      <span class="tech-tag hl">微云备份</span>
+      <span class="tech-tag hl">健康监控</span>
+      <span class="tech-tag">容灾设计</span>
+      <span class="tech-tag">ZIP压缩</span>
+      <span class="tech-tag">Shell脚本</span>
+    </div>
+    <div class="flow-title">备份架构</div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="step-num">1</div>
+        <div class="step-content"><strong>触发层</strong><span>每日双次定时触发（早 9:00 + 下午 15:00），Cron 调度，确保覆盖白天工作成果。</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">2</div>
+        <div class="step-content"><strong>压缩层</strong><span>将指定目录打包为带时间戳的 ZIP 压缩包，采用增量策略减少重复压缩开销。</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">3</div>
+        <div class="step-content"><strong>传输层</strong><span>本地备份后，每 3 天同步一次到微云云端，实现本地+云端双重保护。</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">4</div>
+        <div class="step-content"><strong>监控层</strong><span>保留策略自动清理过期备份，健康监控脚本每天检查备份完整性，异常自动告警。</span></div>
+      </div>
+    </div>
+    <div class="highlight-box">
+      <h4>容灾设计</h4>
+      <ul>
+        <li>保留最近 7 天本地备份 + 最近 4 次云端备份，防止误删</li>
+        <li>异常自动重试机制，单次失败不影响后续调度</li>
+        <li>成功率 97%+，主要失败场景为网络波动，已通过自动重试覆盖</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- P7: Marvis Vox -->
+  <div class="proj-section" id="p7">
+    <div class="proj-header">
+      <span class="proj-icon">🎙️</span>
+      <div class="proj-meta">
+        <div class="proj-name">Marvis Vox · 桌面AI语音助手</div>
+        <div class="proj-tagline">VoxCPM 2 + RTX 3060 · 6 阶段研发 · 8 轮测试</div>
+      </div>
+      <span class="proj-badge">AI分身</span>
+    </div>
+    <div class="tech-tags">
+      <span class="tech-tag hl">VoxCPM 2</span>
+      <span class="tech-tag hl">PyTorch CUDA</span>
+      <span class="tech-tag hl">声音克隆</span>
+      <span class="tech-tag hl">本地TTS</span>
+      <span class="tech-tag">文件监听架构</span>
+      <span class="tech-tag">Python桥接</span>
+    </div>
+    <div class="flow-title">研发历程（6 阶段）</div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="step-num">1</div>
+        <div class="step-content"><strong>技术调研</strong><span>对比 ChatTTS / CosyVoice / VoxCPM 2 三种 TTS 方案，VoxCPM 2 因中文合成质量和 RTX 3060 兼容性胜出。</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">2</div>
+        <div class="step-content"><strong>环境部署</strong><span>CUDA 12.1 + PyTorch 2.x 环境配置，解决 Windows 下 VoxCPM 2 的依赖冲突和版本兼容问题。</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">3</div>
+        <div class="step-content"><strong>桥接架构</strong><span>设计 bridge.py 文件监听架构：Marvis 输出文本 → speak.txt → VoxCPM 2 读取 → 实时语音合成。异步非阻塞。</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">4</div>
+        <div class="step-content"><strong>声音克隆</strong><span>录制参考音频 → 音色提取 → 模型微调，实现自然中文语音克隆，保留原声的语速和情感特征。</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">5</div>
+        <div class="step-content"><strong>5 套自研脚本</strong><span>开发 vox_start.py（启动）、vox_stop.py（停止）、bridge.py（桥接）、vox_monitor.py（监控）、vox_config.py（配置）完整运维体系。</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">6</div>
+        <div class="step-content"><strong>8 轮测试验证</strong><span>覆盖文本长度边界（1-500 字）、中英混合、特殊字符、并发压力、长时间运行稳定性等场景。</span></div>
+      </div>
+    </div>
+    <div class="highlight-box">
+      <h4>技术方案对比</h4>
+      <table style="width:100%;font-size:13px;color:var(--text-muted);border-collapse:collapse;">
+        <tr style="border-bottom:1px solid var(--border)"><th style="text-align:left;padding:8px">方案</th><th style="text-align:left;padding:8px">中文质量</th><th style="text-align:left;padding:8px">速度</th><th style="text-align:left;padding:8px">RTX3060兼容</th><th style="text-align:left;padding:8px">结论</th></tr>
+        <tr style="border-bottom:1px solid var(--border)"><td style="padding:8px">ChatTTS</td><td style="padding:8px">中等</td><td style="padding:8px">快</td><td style="padding:8px">是</td><td style="padding:8px;color:var(--accent3)">淘汰：韵律不足</td></tr>
+        <tr style="border-bottom:1px solid var(--border)"><td style="padding:8px">CosyVoice</td><td style="padding:8px">高</td><td style="padding:8px">慢</td><td style="padding:8px">部分</td><td style="padding:8px;color:var(--accent3)">淘汰：推理太慢</td></tr>
+        <tr><td style="padding:8px;color:var(--accent)">VoxCPM 2</td><td style="padding:8px;color:var(--accent)">高</td><td style="padding:8px;color:var(--accent)">中</td><td style="padding:8px;color:var(--accent)">完美</td><td style="padding:8px;color:var(--accent)">✅ 采用</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- P8: 知识蒸馏 -->
+  <div class="proj-section" id="p8">
+    <div class="proj-header">
+      <span class="proj-icon">🧠</span>
+      <div class="proj-meta">
+        <div class="proj-name">AI 知识蒸馏工具 v2.0</div>
+        <div class="proj-tagline">Vibe Coding · YAML 评分引擎 · PyInstaller EXE</div>
+      </div>
+      <span class="proj-badge" style="background:rgba(91,140,255,0.12);color:var(--accent2);border-color:rgba(91,140,255,0.25)">工具</span>
+    </div>
+    <div class="tech-tags">
+      <span class="tech-tag hl">Python</span>
+      <span class="tech-tag hl">PyInstaller</span>
+      <span class="tech-tag hl">Vibe Coding</span>
+      <span class="tech-tag hl">OCR识别</span>
+      <span class="tech-tag">YAML评分算法</span>
+      <span class="tech-tag">pytesseract</span>
+    </div>
+    <div class="flow-title">处理流水线</div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="step-num">1</div>
+        <div class="step-content"><strong>输入层</strong><span>双入口设计：自动发现模式（扫描指定目录下所有文档）和手动指定模式（拖入单个文件或截图）。</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">2</div>
+        <div class="step-content"><strong>解析层</strong><span>支持 TXT / Markdown / PDF 文本提取，截图 OCR 识别（pytesseract），统一转为结构化文本。</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">3</div>
+        <div class="step-content"><strong>评分引擎</strong><span>YAML 配置文件驱动：定义知识点权重、关键词匹配规则、信息密度阈值。动态评分算法输出结构化笔记。</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">4</div>
+        <div class="step-content"><strong>打包交付</strong><span>PyInstaller 打包为单文件 EXE，无需 Python 环境即可运行，方便分发给非技术人员使用。</span></div>
+      </div>
+    </div>
+    <div class="highlight-box">
+      <h4>Vibe Coding 实践</h4>
+      <ul>
+        <li>全程使用 AI 辅助编写代码，人类负责需求定义和质量审查</li>
+        <li>YAML 配置驱动的评分算法，非技术人员也能通过修改配置文件调整评分策略</li>
+        <li>从概念到可用 EXE 仅用 3 天，展现了 AI 协同开发在工具类产品中的极高效率</li>
+      </ul>
+    </div>
+    <div style="margin-top:20px">
+      <img class="screenshot" src="knowledge.png" alt="知识蒸馏工具截图" />
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>梁正俣 · 落枕雨 · 2026 届应届毕业生 | 本页面由 AI 协同生成，内容真实有效</p>
+</footer>
+</body>
+</html>
