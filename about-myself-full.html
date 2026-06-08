@@ -1,0 +1,1311 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>梁正俣 · AI产品人 · 个人简历</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ============ DESIGN TOKENS ============ */
+    :root {
+      --bg-deep: #080b10;
+      --bg: #0d1015;
+      --bg-card: #131720;
+      --bg-card2: #191f2b;
+      --bg-card3: #1f2735;
+      --border: rgba(255,255,255,0.06);
+      --border-hover: rgba(99,209,163,0.3);
+      --text: #e6eaf2;
+      --text-2: #9ca3b5;
+      --text-3: #5c6475;
+      --accent: #63d1a3;
+      --accent2: #5b8cff;
+      --accent3: #ff7b5e;
+      --accent4: #c084fc;
+      --accent-glow: rgba(99,209,163,0.1);
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+      --shadow-md: 0 8px 30px rgba(0,0,0,0.4);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.5);
+      --radius: 14px;
+      --radius-lg: 20px;
+      --maxw: 1120px;
+    }
+
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Inter',-apple-system,BlinkMacSystemFont,'PingFang SC','Noto Sans SC',sans-serif;
+      font-size:15px;line-height:1.7;color:var(--text);background:var(--bg-deep);
+      -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden
+    }
+    a{color:inherit;text-decoration:none}img{max-width:100%}
+    h1,h2,h3,h4{font-weight:600;color:var(--text);letter-spacing:-0.01em}
+    p{color:var(--text-2)}
+
+    ::-webkit-scrollbar{width:4px}
+    ::-webkit-scrollbar-track{background:var(--bg-deep)}
+    ::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+
+    /* background atmosphere */
+    body::before{
+      content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+      background:
+        radial-gradient(900px 500px at 20% 10%,rgba(99,209,163,0.03),transparent 60%),
+        radial-gradient(700px 400px at 80% 70%,rgba(91,140,255,0.03),transparent 60%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+      opacity:0.6;
+    }
+
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 28px;position:relative;z-index:1}
+
+    /* ============ SECTION INDEX ============ */
+    .section-index{
+      position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:90;
+      display:flex;flex-direction:column;gap:14px;
+      background:rgba(13,16,21,0.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+      padding:14px 10px;border-radius:30px;border:1px solid var(--border);
+    }
+    .section-index a{
+      display:flex;align-items:center;gap:8px;
+      font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-3);
+      font-weight:500;letter-spacing:0.1em;text-transform:uppercase;transition:color .2s
+    }
+    .section-index a:hover,.section-index a.active{color:var(--accent)}
+    .section-index a.active .si-dot{background:var(--accent);transform:scale(1.4);box-shadow:0 0 8px rgba(99,209,163,0.4)}
+    .si-dot{width:5px;height:5px;border-radius:50%;background:var(--text-3);transition:all .25s}
+    @media (max-width:1200px){.section-index{display:none}}
+
+    /* ============ NAV ============ */
+    .header{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      background:rgba(8,11,16,0.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--border);height:68px;
+      transition:border-color .3s
+    }
+    .header.scrolled{border-bottom-color:rgba(99,209,163,0.1)}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;height:100%}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-0.02em}
+    .brand-mark{
+      width:34px;height:34px;border-radius:8px;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      display:grid;place-items:center;position:relative;overflow:hidden
+    }
+    .brand-mark span{position:relative;z-index:1;font-size:16px;font-weight:800;color:#080b10}
+    .brand-text{font-size:15px;color:var(--text);font-family:'Outfit',sans-serif}
+    .brand-text small{display:block;font-size:10px;color:var(--text-3);font-weight:500;letter-spacing:.14em;text-transform:uppercase}
+    .nav{display:flex;align-items:center;gap:26px}
+    .nav a{font-size:13px;color:var(--text-2);font-weight:500;position:relative;padding:4px 0;transition:color .2s}
+    .nav a:hover{color:var(--text)}
+    .nav a::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1.5px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+    .nav a:hover::after{transform:scaleX(1)}
+    .nav-cta{
+      background:linear-gradient(135deg,var(--accent),#4ec494);color:#080b10;
+      font-size:12px;font-weight:700;padding:8px 20px;border-radius:20px;
+      transition:all .25s;white-space:nowrap
+    }
+    .nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(99,209,163,0.3)}
+    @media(max-width:860px){.nav{display:none}}
+
+    /* ============ SECTION HEADERS ============ */
+    .sec-head{margin-bottom:52px}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+      color:var(--accent);margin-bottom:12px
+    }
+    .eyebrow::before{content:"";width:20px;height:1.5px;background:var(--accent)}
+    .sec-title{
+      font-family:'Outfit',sans-serif;font-size:clamp(28px,4vw,42px);
+      font-weight:800;letter-spacing:-1px;line-height:1.12;margin-bottom:8px
+    }
+    .sec-title em{font-style:normal;color:var(--accent)}
+    .sec-desc{font-size:15px;color:var(--text-2);max-width:560px;line-height:1.8}
+
+    /* ============ HERO ============ */
+    .hero{min-height:100dvh;display:flex;align-items:center;padding-top:88px;position:relative;overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:64px;align-items:center;width:100%}
+    .hero-tag{
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--bg-card);border:1px solid var(--border);border-radius:20px;
+      padding:6px 16px;font-size:12px;color:var(--text-2);margin-bottom:24px
+    }
+    .hero-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.75)}}
+    .hero-name{
+      font-family:'Outfit',sans-serif;font-size:clamp(42px,6.5vw,72px);
+      font-weight:800;line-height:1.04;letter-spacing:-1.5px;margin-bottom:8px
+    }
+    .hero-name-en{display:block;font-size:.4em;font-weight:400;color:var(--text-3);letter-spacing:4px;text-transform:uppercase;margin-top:6px}
+    .hero-highlight{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero-title{font-family:'Outfit',sans-serif;font-size:22px;font-weight:500;color:var(--text-2);margin-bottom:20px}
+    .hero-desc{color:var(--text-2);font-size:15px;max-width:520px;line-height:1.85;margin-bottom:36px}
+    .hero-desc strong{color:var(--text)}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn-primary{
+      background:linear-gradient(135deg,var(--accent),#4ec494);color:#080b10;
+      font-weight:700;font-size:14px;padding:13px 28px;border-radius:12px;
+      transition:all .25s;display:inline-flex;align-items:center;gap:8px
+    }
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(99,209,163,0.25)}
+    .btn-secondary{
+      background:var(--bg-card);border:1px solid var(--border);color:var(--text);
+      font-weight:500;font-size:14px;padding:13px 28px;border-radius:12px;
+      transition:all .25s;display:inline-flex;align-items:center;gap:8px
+    }
+    .btn-secondary:hover{border-color:var(--border-hover);background:var(--bg-card2)}
+
+    /* hero card */
+    .hero-card{
+      background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);
+      padding:32px;position:relative;overflow:hidden;transition:transform .3s
+    }
+    .hero-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+    .hero-card:hover{transform:translateY(-2px)}
+    .avatar-wrap{
+      width:88px;height:88px;border-radius:50%;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      display:flex;align-items:center;justify-content:center;
+      font-family:'Outfit',sans-serif;font-size:32px;font-weight:800;color:#080b10;margin-bottom:16px
+    }
+    .card-name{font-family:'Outfit',sans-serif;font-weight:700;font-size:20px;margin-bottom:4px}
+    .card-sub{font-size:12px;color:var(--text-2);margin-bottom:20px}
+    .card-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+    .card-stat{background:var(--bg-card2);border-radius:10px;padding:12px;text-align:center;transition:transform .2s}
+    .card-stat:hover{transform:translateY(-2px)}
+    .card-stat-num{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:var(--accent);line-height:1;margin-bottom:4px}
+    .card-stat-label{font-size:10.5px;color:var(--text-3)}
+    .card-tags{display:flex;flex-wrap:wrap;gap:6px}
+    .card-tag{background:rgba(99,209,163,0.1);border:1px solid rgba(99,209,163,0.18);border-radius:6px;padding:4px 10px;font-size:11px;color:var(--accent);font-weight:500}
+    .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+    .info-chip{display:flex;align-items:center;gap:6px;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:12px;color:var(--text-2)}
+    .info-chip svg{opacity:0.4}
+    .divider{width:44px;height:2px;background:linear-gradient(90deg,var(--accent),transparent);margin:16px 0}
+    @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:40px}.hero-card{max-width:380px}}
+
+    /* ============ EDUCATION BAND ============ */
+    .edu-band{background:var(--bg-card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 0}
+    .edu-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+    .edu-item{display:flex;align-items:center;gap:14px;cursor:pointer;transition:transform .2s}
+    .edu-item:hover{transform:translateY(-1px)}
+    .edu-icon{width:44px;height:44px;border-radius:10px;background:rgba(91,140,255,0.1);display:flex;align-items:center;justify-content:center;font-size:20px}
+    .edu-title{font-weight:700;font-size:15px;margin-bottom:2px}
+    .edu-sub{font-size:12px;color:var(--text-3)}
+    .edu-sep{width:1px;height:36px;background:var(--border)}
+    @media(max-width:900px){.edu-sep{display:none}}
+
+    /* ============ SKILLS ============ */
+    .skills-bg{background:linear-gradient(180deg,transparent,var(--bg-card) 30%,var(--bg-card) 70%,transparent)}
+    .skill-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .skill-group{
+      background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--radius);
+      padding:28px;transition:all .3s;position:relative;overflow:hidden;cursor:default
+    }
+    .skill-group::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0;transition:opacity .35s}
+    .skill-group:hover{border-color:var(--border-hover);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+    .skill-group:hover::before{opacity:1}
+    .skill-group-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:14px}
+    .sg-ai{background:rgba(99,209,163,0.12)}.sg-dev{background:rgba(91,140,255,0.12)}.sg-design{background:rgba(255,123,94,0.12)}.sg-auto{background:rgba(192,132,252,0.12)}.sg-pm{background:rgba(255,200,50,0.12)}.sg-content{background:rgba(99,209,163,0.08)}
+    .skill-group-name{font-family:'Outfit',sans-serif;font-weight:700;font-size:16px;margin-bottom:6px}
+    .skill-group-desc{font-size:12.5px;color:var(--text-2);margin-bottom:16px;line-height:1.65}
+    .skill-pills{display:flex;flex-wrap:wrap;gap:5px}
+    .skill-pill{background:var(--bg-card);border:1px solid var(--border);border-radius:5px;padding:3px 9px;font-size:11.5px;color:var(--text-2);font-weight:500;transition:all .2s}
+    .skill-pill.hot{background:rgba(99,209,163,0.08);border-color:rgba(99,209,163,0.2);color:var(--accent)}
+    .skill-pill:hover{border-color:var(--border-hover)}
+    @media(max-width:960px){.skill-groups{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:600px){.skill-groups{grid-template-columns:1fr}}
+
+    /* ============ TIMELINE ============ */
+    .timeline{position:relative}
+    .timeline::before{content:"";position:absolute;left:18px;top:0;bottom:0;width:1px;background:linear-gradient(180deg,var(--accent),var(--accent2),transparent)}
+    .tl-item{display:flex;gap:28px;padding-left:48px;position:relative;margin-bottom:36px}
+    .tl-dot{position:absolute;left:11px;top:7px;width:14px;height:14px;border-radius:50%;border:2px solid var(--accent);background:var(--bg-deep);z-index:1;transition:all .3s}
+    .tl-dot.active{background:var(--accent);box-shadow:0 0 14px rgba(99,209,163,0.5)}
+    .tl-content{flex:1;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px;transition:all .3s}
+    .tl-content:hover{border-color:var(--border-hover);transform:translateX(4px)}
+    .tl-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+    .tl-company{font-family:'Outfit',sans-serif;font-weight:700;font-size:17px}
+    .tl-time{font-size:11.5px;color:var(--accent);font-weight:600;background:rgba(99,209,163,0.1);border:1px solid rgba(99,209,163,0.18);padding:3px 10px;border-radius:20px;white-space:nowrap}
+    .tl-role{font-size:13px;color:var(--text-2);margin-bottom:14px}
+    .tl-desc{font-size:14px;color:var(--text-2);line-height:1.85;margin-bottom:14px}
+    .tl-tags{display:flex;flex-wrap:wrap;gap:6px}
+    .tl-tag{font-size:11px;background:var(--bg-card2);border:1px solid var(--border);border-radius:5px;padding:3px 9px;color:var(--text-2)}
+    .tl-tag.accent{background:rgba(91,140,255,0.1);border-color:rgba(91,140,255,0.2);color:var(--accent2)}
+
+    /* ============ PROJECTS ============ */
+    .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .proj-card{
+      background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);
+      padding:26px;transition:all .3s;position:relative;overflow:hidden;cursor:pointer
+    }
+    .proj-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2),transparent);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+    .proj-card::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,var(--accent-glow),transparent);opacity:0;transition:opacity .3s}
+    .proj-card:hover{transform:translateY(-3px);border-color:var(--border-hover);box-shadow:var(--shadow-md)}
+    .proj-card:hover::before{transform:scaleX(1)}
+    .proj-card:hover::after{opacity:1}
+    .proj-card-inner{position:relative;z-index:1}
+    .proj-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
+    .proj-icon{font-size:26px;line-height:1}
+    .proj-badge{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:3px 10px;border-radius:20px}
+    .badge-ai{background:rgba(99,209,163,0.12);color:var(--accent);border:1px solid rgba(99,209,163,0.2)}
+    .badge-dev{background:rgba(91,140,255,0.12);color:var(--accent2);border:1px solid rgba(91,140,255,0.2)}
+    .badge-auto{background:rgba(192,132,252,0.12);color:var(--accent4);border:1px solid rgba(192,132,252,0.2)}
+    .badge-design{background:rgba(255,123,94,0.12);color:var(--accent3);border:1px solid rgba(255,123,94,0.2)}
+    .proj-name{font-family:'Outfit',sans-serif;font-weight:700;font-size:17px;margin-bottom:8px}
+    .proj-desc{font-size:13px;color:var(--text-2);line-height:1.7;margin-bottom:14px}
+    .proj-footer{display:flex;flex-wrap:wrap;gap:5px}
+    .proj-tag{font-size:10.5px;background:var(--bg-card2);border:1px solid var(--border);border-radius:4px;padding:3px 8px;color:var(--text-3)}
+    @media(max-width:960px){.projects-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:600px){.projects-grid{grid-template-columns:1fr}}
+
+    /* ============ ABOUT ============ */
+    .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:start}
+    .about-text p{color:var(--text-2);line-height:1.9;margin-bottom:18px;font-size:15px}
+    .about-text .highlight{color:var(--accent);font-weight:600}
+    .about-values{display:flex;flex-direction:column;gap:12px}
+    .value-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:18px 20px;display:flex;gap:14px;align-items:flex-start;transition:all .25s;cursor:default}
+    .value-card:hover{border-color:var(--border-hover);transform:translateX(3px)}
+    .value-icon{font-size:20px;min-width:28px;line-height:1.5}
+    .value-text strong{font-size:14px;font-weight:600;display:block;margin-bottom:3px}
+    .value-text span{font-size:12px;color:var(--text-2);line-height:1.65}
+    @media(max-width:900px){.about-grid{grid-template-columns:1fr}}
+
+    /* ============ STATS ROW ============ */
+    .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:60px}
+    .stat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center;transition:transform .25s}
+    .stat-card:hover{transform:translateY(-2px)}
+    .stat-num{font-family:'JetBrains Mono',monospace;font-size:34px;font-weight:700;line-height:1;margin-bottom:6px}
+    .stat-label{font-size:11.5px;color:var(--text-3)}
+    @media(max-width:900px){.stats-row{grid-template-columns:repeat(2,1fr)}}
+
+    /* ============ CONTACT ============ */
+    .contact-inner{text-align:center;max-width:600px;margin:0 auto}
+    .contact-links{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-bottom:40px}
+    .contact-link{display:flex;align-items:center;gap:8px;background:var(--bg-card2);border:1px solid var(--border);border-radius:10px;padding:12px 20px;font-size:13px;font-weight:500;color:var(--text);transition:all .25s}
+    .contact-link:hover{border-color:var(--border-hover);color:var(--accent);transform:translateY(-2px)}
+    .contact-link-icon{font-size:16px}
+    .contact-note{color:var(--text-3);font-size:12.5px;padding-top:24px;border-top:1px solid var(--border)}
+
+    /* ============ FOOTER ============ */
+    footer{padding:28px 0;text-align:center;color:var(--text-3);font-size:12px;border-top:1px solid var(--border);background:var(--bg-card)}
+
+    /* ============ ANIMATIONS ============ */
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+    .reveal.in{opacity:1;transform:translateY(0)}
+    .reveal:nth-child(1){transition-delay:0ms}
+    .reveal:nth-child(2){transition-delay:70ms}
+    .reveal:nth-child(3){transition-delay:140ms}
+    .reveal:nth-child(4){transition-delay:210ms}
+    .reveal:nth-child(5){transition-delay:280ms}
+    .reveal:nth-child(6){transition-delay:350ms}
+    .reveal:nth-child(7){transition-delay:420ms}
+
+    .typewriter::after{content:'|';color:var(--accent);animation:blink .9s infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+    section{padding:90px 0}
+    @media(max-width:640px){section{padding:60px 0}.hero-name{letter-spacing:-1px}.container{padding:0 20px}}
+  
+    /* === Detail Overlay === */
+    .detail-overlay {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: var(--bg); overflow-y: auto;
+    }
+    .detail-overlay.active { display: block; }
+    .detail-nav {
+      position: sticky; top: 0; z-index: 210;
+      padding: 14px 24px; display: flex; align-items: center; justify-content: space-between;
+      background: rgba(13, 15, 20, 0.9); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .detail-nav-logo {
+      font-family: var(--font-head); font-weight: 700; font-size: 18px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .detail-nav-close {
+      color: var(--text-muted); font-size: 13px; cursor: pointer; text-decoration: none;
+      padding: 6px 16px; border: 1px solid var(--border); border-radius: 20px;
+      transition: all 0.2s;
+    }
+    .detail-nav-close:hover { color: var(--accent); border-color: var(--border-hover); }
+    .detail-toc { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
+    .detail-toc a {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 8px; padding: 8px 16px; font-size: 13px;
+      color: var(--text-muted); text-decoration: none; transition: all 0.2s;
+      cursor: pointer;
+    }
+    .detail-toc a:hover, .detail-toc a.active { border-color: var(--border-hover); color: var(--text); }
+    .detail-toc a.active { background: rgba(99,209,163,0.08); border-color: rgba(99,209,163,0.35); color: var(--accent); }
+    .detail-page-title {
+      font-family: var(--font-head); font-weight: 800; letter-spacing: -1.5px; margin-bottom: 8px;
+      font-size: clamp(32px, 5vw, 48px);
+    }
+    .detail-page-sub { color: var(--text-muted); font-size: 15px; margin-bottom: 40px; }
+    .detail-proj-section {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 40px; margin-bottom: 32px;
+      position: relative; display: none;
+    }
+    .detail-proj-section:hover { border-color: var(--border-hover); }
+    .detail-proj-section .back-top {
+      position: absolute; top: 16px; right: 20px;
+      font-size: 12px; color: var(--text-dim); text-decoration: none;
+      padding: 4px 12px; border: 1px solid var(--border);
+      border-radius: 20px; transition: all 0.2s;
+    }
+    .detail-proj-section .back-top:hover { color: var(--accent); border-color: var(--border-hover); }
+    .detail-proj-section .proj-header {
+      display: flex; align-items: flex-start; gap: 16px; margin-bottom: 8px;
+    }
+    .detail-proj-section .proj-icon { font-size: 36px; line-height: 1; }
+    .detail-proj-section .proj-meta { flex: 1; }
+    .detail-proj-section .proj-name {
+      font-family: var(--font-head); font-weight: 700; font-size: 24px; margin-bottom: 2px;
+    }
+    .detail-proj-section .proj-tagline { color: var(--text-muted); font-size: 13px; }
+    .detail-module { margin-top: 28px; }
+    .detail-module-title {
+      font-family: var(--font-head); font-weight: 600; font-size: 13px;
+      letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px;
+      padding: 6px 14px; border-radius: 6px; display: inline-block;
+    }
+    .detail-mt-inspire { color: #ff7b5e; background: rgba(255,123,94,0.08); border: 1px solid rgba(255,123,94,0.2); }
+    .detail-mt-how { color: #5b8cff; background: rgba(91,140,255,0.08); border: 1px solid rgba(91,140,255,0.2); }
+    .detail-mt-result { color: #63d1a3; background: rgba(99,209,163,0.08); border: 1px solid rgba(99,209,163,0.2); }
+    .detail-module-body {
+      background: var(--bg-card2); border-radius: 10px;
+      padding: 20px 24px; margin-bottom: 8px;
+      font-size: 14px; color: var(--text-muted); line-height: 1.9;
+    }
+    .detail-module-body p { margin-bottom: 10px; }
+    .detail-module-body p:last-child { margin-bottom: 0; }
+    .detail-tech-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .detail-tech-tag {
+      font-size: 11px; background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      border-radius: 5px; padding: 4px 10px; color: var(--text-dim);
+    }
+    .detail-tech-tag.hl {
+      background: rgba(99,209,163,0.08); border-color: rgba(99,209,163,0.25); color: var(--accent);
+    }
+    .detail-footer {
+      padding: 40px 0; text-align: center; color: var(--text-dim); font-size: 12px;
+      border-top: 1px solid var(--border); margin-top: 40px;
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- SECTION INDEX -->
+<nav class="section-index" aria-label="页面导航">
+  <a href="#hero" data-target="hero"><span class="si-dot"></span><span>01</span></a>
+  <a href="#skills" data-target="skills"><span class="si-dot"></span><span>02</span></a>
+  <a href="#experience" data-target="experience"><span class="si-dot"></span><span>03</span></a>
+  <a href="#projects" data-target="projects"><span class="si-dot"></span><span>04</span></a>
+  <a href="#about" data-target="about"><span class="si-dot"></span><span>05</span></a>
+  <a href="#contact" data-target="contact"><span class="si-dot"></span><span>06</span></a>
+</nav>
+
+<!-- NAV -->
+<header class="header" id="header">
+  <div class="container header-inner">
+    <a href="#" class="brand">
+      <div class="brand-mark"><span>俣</span></div>
+      <div class="brand-text">梁正俣<small>Nitefish · Portfolio</small></div>
+    </a>
+    <nav class="nav">
+      <a href="#skills">技能</a><a href="#experience">经历</a><a href="#projects">项目</a><a href="#about">关于我</a><a href="#contact">联系</a>
+    </nav>
+    <a href="mailto:1724267009@qq.com" class="nav-cta">立即联系</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-tag">
+          <div class="hero-tag-dot"></div>
+          <span>2026届应届毕业生 · 寻求 AI 应用/产品岗位</span>
+        </div>
+        <h1 class="hero-name">
+          梁正俣
+          <span class="hero-name-en">Liang Zhengyu · Nitefish</span>
+        </h1>
+        <p class="hero-title"><span class="hero-highlight">AI 应用</span> / 产品运营 / 数字创意</p>
+
+        <div class="badge-row">
+          <span class="info-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>广州 · 意向广深</span>
+          <span class="info-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>2026届本科 · 广州商学院</span>
+          <span class="info-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>AI绘图 · AI 协同开发 · 自动化 · 产品策划</span>
+        </div>
+
+        <p class="hero-desc">
+          应届毕业生，<strong>新豪轩智能家居管培生</strong>，同时是 AI 工具的深度实践者。
+          擅长将 AI 工具落地为实际业务价值 —— 从 ComfyUI 图像生成、自动化工作流搭建，到 AI 协同网页开发与数字分身构建。
+          目标是成为懂业务、会工具、能交付的<span class="hero-highlight">AI 应用人才</span>。
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>联系我
+          </a>
+          <a href="#projects" class="btn-secondary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>查看项目
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-card reveal">
+        <div class="avatar-wrap">俣</div>
+        <div class="card-name">梁正俣</div>
+        <div class="card-sub">落枕雨 · Nitefish · 2004年生 · 广东云浮</div>
+        <div class="card-stat-row">
+          <div class="card-stat"><div class="card-stat-num">7+</div><div class="card-stat-label">AI工具<br>项目</div></div>
+          <div class="card-stat"><div class="card-stat-num">1</div><div class="card-stat-label">管培生<br>经历</div></div>
+          <div class="card-stat"><div class="card-stat-num">RTX3060</div><div class="card-stat-label">本地算力<br>配置</div></div>
+          <div class="card-stat"><div class="card-stat-num">v4</div><div class="card-stat-label">数字分身<br>迭代版本</div></div>
+        </div>
+        <div class="card-tags">
+          <span class="card-tag">AI产品</span><span class="card-tag">图像生成</span><span class="card-tag">自动化</span>
+          <span class="card-tag">AI 协同开发</span><span class="card-tag">3D设计</span><span class="card-tag">语音TTS</span><span class="card-tag">知识蒸馏</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION BAND -->
+<div class="edu-band">
+  <div class="container">
+    <div class="edu-inner">
+      <div class="edu-item"><div class="edu-icon">🎓</div><div><div class="edu-title">广州商学院 · 国际经济与贸易</div><div class="edu-sub">本科 · 2026届应届毕业生</div></div></div>
+      <div class="edu-sep"></div>
+      <div class="edu-item"><div class="edu-icon" style="background:rgba(99,209,163,0.1)">🤖</div><div><div class="edu-title">AI 工作流工具深度用户</div><div class="edu-sub">AI工具实践者 · Skill工作流 · 自动化</div></div></div>
+      <div class="edu-sep"></div>
+      <div class="edu-item"><div class="edu-icon" style="background:rgba(255,123,94,0.1)">🏠</div><div><div class="edu-title">新豪轩智能家居</div><div class="edu-sub">管培生 · 入户门产品 + AI设计</div></div></div>
+      <div class="edu-sep"></div>
+      <div class="edu-item"><div class="edu-icon" style="background:rgba(192,132,252,0.1)">🌏</div><div><div class="edu-title">意向岗位</div><div class="edu-sub">广深 · AI应用/产品运营/内容运营</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills" class="skills-bg">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">02 · 核心能力</span>
+      <h2 class="sec-title">AI赛道<em>核心能力图谱</em></h2>
+      <div class="divider"></div>
+      <p class="sec-desc">求职意向：AI产品经理 / AI产品助理 / AI应用项目经理 / Agent应用实施<br>善用 AI 工具提升效率，具备图像生成、自动化工作流搭建与 AI 协同开发的实战经验，能在业务场景中快速落地 AI 方案。</p>
+    </div>
+
+    <div class="skill-groups">
+      <div class="skill-group reveal">
+        <div class="skill-group-icon sg-ai">🎨</div>
+        <div class="skill-group-name">AI 图像生成</div>
+        <div class="skill-group-desc">本地部署 ComfyUI / SDXL 流程，制作产品效果图与概念渲染图，具备提示词工程能力。</div>
+        <div class="skill-pills">
+          <span class="skill-pill hot">ComfyUI</span><span class="skill-pill hot">Stable Diffusion XL</span>
+          <span class="skill-pill hot">GPT-Image-2</span><span class="skill-pill">Juggernaut XL</span>
+          <span class="skill-pill">RealVisXL</span><span class="skill-pill">提示词工程</span>
+          <span class="skill-pill">LoRA/模型调参</span><span class="skill-pill">工作流设计</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-icon sg-auto">⚡</div>
+        <div class="skill-group-name">自动化 & Agentic AI</div>
+        <div class="skill-group-desc">搭建自动化工作流，具备 WorkBuddy Agent / Claude Code / DeepSeek API 的实际使用与调试经验，善于将重复工作系统化。</div>
+        <div class="skill-pills">
+          <span class="skill-pill hot">WorkBuddy Agent</span><span class="skill-pill hot">Claude Code</span>
+          <span class="skill-pill">DeepSeek API</span><span class="skill-pill">MiniMax API</span>
+          <span class="skill-pill">Cron自动化</span><span class="skill-pill">Shell脚本</span>
+          <span class="skill-pill">Skill工作流</span><span class="skill-pill">CC-Switch</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-icon sg-dev">💻</div>
+        <div class="skill-group-name">AI 协同网页开发</div>
+        <div class="skill-group-desc">借助 AI 编程工具完成网页项目从设计到部署的全流程，能快速搭建并上线静态网站与小程序，具备在线部署经验。</div>
+        <div class="skill-pills">
+          <span class="skill-pill hot">AI 协同编程</span><span class="skill-pill hot">HTML/CSS/JS</span>
+          <span class="skill-pill">在线部署</span><span class="skill-pill">微信小程序</span>
+          <span class="skill-pill">Node.js</span><span class="skill-pill">Python</span>
+          <span class="skill-pill">Git/GitHub</span><span class="skill-pill">GitHub Pages</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-icon sg-design">🏠</div>
+        <div class="skill-group-name">3D 设计 & 视觉创意</div>
+        <div class="skill-group-desc">使用酷家乐完成室内效果图，结合 AI 工具制作产品宣传材料，具备 CAD / PS 操作基础。</div>
+        <div class="skill-pills">
+          <span class="skill-pill hot">酷家乐3D</span><span class="skill-pill hot">Photoshop</span>
+          <span class="skill-pill">CAD</span><span class="skill-pill">产品效果图</span>
+          <span class="skill-pill">概念设计</span><span class="skill-pill">材质渲染</span><span class="skill-pill">图册制作</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-icon sg-pm">📊</div>
+        <div class="skill-group-name">产品思维 & 运营</div>
+        <div class="skill-group-desc">管培生经历锻炼了产品思维与运营执行能力，善于从业务需求出发策划方案，具备公众号运营与内容策划的实战经验。</div>
+        <div class="skill-pills">
+          <span class="skill-pill hot">产品需求文档(PRD)</span><span class="skill-pill hot">用户调研</span>
+          <span class="skill-pill">竞品分析</span><span class="skill-pill">公众号运营</span>
+          <span class="skill-pill">数据分析</span><span class="skill-pill">产品拍摄</span><span class="skill-pill">内容策划</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-icon sg-content">🤖</div>
+        <div class="skill-group-name">AI 工具生态整合</div>
+        <div class="skill-group-desc">广泛使用并熟悉主流 AI 工具生态，能快速学习并将其嵌入实际工作流，构建个性化数字助手体系。</div>
+        <div class="skill-pills">
+          <span class="skill-pill hot">Skill工作流设计</span><span class="skill-pill hot">数字分身构建</span>
+          <span class="skill-pill hot">本地TTS(VoxCPM 2)</span><span class="skill-pill hot">声音克隆</span>
+          <span class="skill-pill">Vibe Coding</span><span class="skill-pill">知识蒸馏</span>
+          <span class="skill-pill">CC-Switch配置</span><span class="skill-pill">腾讯云</span><span class="skill-pill">微云备份</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">03 · 工作经历</span>
+      <h2 class="sec-title">实习 & <em>工作经历</em></h2>
+      <div class="divider"></div>
+      <p class="sec-desc">跨越智能家居与 AI 工具深度实践，在真实商业环境中积累了落地 AI 工具的实战能力。</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-dot active"></div>
+        <div class="tl-content">
+          <div class="tl-header"><div class="tl-company">新豪轩智能家居</div><span class="tl-time">2025.11 — 2026.06</span></div>
+          <div class="tl-role">管培生 · 入户门产品方向</div>
+          <div class="tl-desc">独立负责入户门 AI 效果图生产链路的搭建，基于 ComfyUI SDXL 完成多款产品渲染图，直接应用于销售图册与展会物料。参与机车概念门项目，提供视觉创意与平面效果图设计。同时承担高新技术材料申报项目的文档整理与成果归档，协调跨部门协作流程。</div>
+          <div class="tl-tags">
+            <span class="tl-tag accent">ComfyUI SDXL</span><span class="tl-tag accent">酷家乐3D</span>
+            <span class="tl-tag">产品图册</span><span class="tl-tag">概念门设计</span>
+            <span class="tl-tag">技术材料申报</span><span class="tl-tag">跨部门协作</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-header"><div class="tl-company">个人项目 & 副业</div><span class="tl-time">2024 — 至今</span></div>
+          <div class="tl-role">AI 工具深度用户 · 个人项目实践者</div>
+          <div class="tl-desc">在校期间借助 AI 完成多个个人项目：PyWxDump 微信数据工具、个人电子简历网站等，实践了从需求到部署的完整流程。2026 年进一步深化：基于 VoxCPM 2 构建 Marvis Vox 桌面语音助手（声音克隆+本地TTS），用 Vibe Coding 开发 AI 知识蒸馏工具 v2.0（YAML评分+OCR识别+PyInstaller打包）。同时开展 AI 写作辅助副业，帮助多人完成本科论文润色与修改，形成标准化交付流程（马维斯+DeepSeek工具链）。</div>
+          <div class="tl-tags">
+            <span class="tl-tag">微信小程序</span><span class="tl-tag">AI 协同开发</span>
+            <span class="tl-tag">Python工具</span><span class="tl-tag">AI写作辅助</span>
+            <span class="tl-tag">在线部署</span>
+            <span class="tl-tag accent">VoxCPM 2 TTS</span><span class="tl-tag accent">知识蒸馏</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="background:var(--bg-card);">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">04 · 项目作品</span>
+      <h2 class="sec-title"><em>代表性项目</em></h2>
+      <div class="divider"></div>
+      <p class="sec-desc">从自动化系统到 AI 分身构建，这些项目展示了我借助 AI 工具解决实际问题的能力。</p>
+    </div>
+
+    <div class="projects-grid">
+      <div class="proj-card reveal" onclick="openDetail('p1')">
+        <div class="proj-card-inner">
+          <div class="proj-header"><span class="proj-icon">🐟</span><span class="proj-badge badge-ai">AI分身</span></div>
+          <div class="proj-name">Night🐟 数字分身系统</div>
+          <div class="proj-desc">受蒸馏 Skill 项目启发，在 WorkBuddy 框架上构建可对话的「过去自己」。基于 SKILL.md + self.md + persona.md 三文件架构，night-3 自动化脚本每日从 conversation_search 和 memory 双源同步记忆，实现数字自我持续迭代。核心难点：解决跨天对话归因导致的漏录问题。</div>
+          <div class="proj-footer"><span class="proj-tag">WorkBuddy Agent</span><span class="proj-tag">自动化脚本</span><span class="proj-tag">长期记忆</span><span class="proj-tag">Skill设计</span></div>
+        </div>
+      </div>
+      <div class="proj-card reveal" onclick="openDetail('p2')">
+        <div class="proj-card-inner">
+          <div class="proj-header"><span class="proj-icon">📰</span><span class="proj-badge badge-auto">自动化</span></div>
+          <div class="proj-name">每日早报自动化系统</div>
+          <div class="proj-desc">设计并维护每天7:05自动运行的早报系统，整合天气（Amap API）、SSD价格监控（ZOL/京东/新浪多源交叉验证）与微博热搜，以 Markdown 格式汇总推送。运行30+天零失败。</div>
+          <div class="proj-footer"><span class="proj-tag">Amap API</span><span class="proj-tag">多源数据聚合</span><span class="proj-tag">Cron调度</span><span class="proj-tag">价格监控</span></div>
+        </div>
+      </div>
+      <div class="proj-card reveal" onclick="openDetail('p3')">
+        <div class="proj-card-inner">
+          <div class="proj-header"><span class="proj-icon">🚪</span><span class="proj-badge badge-design">AI设计</span></div>
+          <div class="proj-name">入户门 AI 效果图生产线</div>
+          <div class="proj-desc">搭建基于 ComfyUI SDXL 的入户门效果图生产工作流，覆盖贝壳木纹、白色岩板、海石纹肌理等7种材质渲染，成果直接用于销售图册与博览会展示，累计产出图像50+张。</div>
+          <div class="proj-footer"><span class="proj-tag">ComfyUI SDXL</span><span class="proj-tag">材质渲染</span><span class="proj-tag">项目交付</span><span class="proj-tag">提示词优化</span></div>
+        </div>
+      </div>
+      <div class="proj-card reveal" onclick="openDetail('p4')">
+        <div class="proj-card-inner">
+          <div class="proj-header"><span class="proj-icon">📄</span><span class="proj-badge badge-dev">网页</span></div>
+          <div class="proj-name">个人电子简历网站</div>
+          <div class="proj-desc">借助 AI 协同编程，从零搭建个人电子简历网站。深色科技风设计，纯 HTML/CSS/JS 单文件，打字机动画 + 滚动动画，可直接部署到 GitHub Pages。</div>
+          <div class="proj-footer"><span class="proj-tag">AI 协同编程</span><span class="proj-tag">HTML/CSS/JS</span><span class="proj-tag">在线部署</span><span class="proj-tag">响应式设计</span></div>
+        </div>
+      </div>
+      <div class="proj-card reveal" onclick="openDetail('p5')">
+        <div class="proj-card-inner">
+          <div class="proj-header"><span class="proj-icon">☁️</span><span class="proj-badge badge-auto">系统</span></div>
+          <div class="proj-name">听雨眠备份系统</div>
+          <div class="proj-desc">为防止本机全部记忆丢失，自研四层备份体系：双次触发（Cron）→ ZIP压缩 → 微云三日一备 → 健康监控。备份内容覆盖 SOUL.md、IDENTITY.md、settings.json、workbuddy.db 等核心数据，近7个本地存档 + 云端4个，每个约44MB，成功率97%+。</div>
+          <div class="proj-footer"><span class="proj-tag">自动化调度</span><span class="proj-tag">微云备份</span><span class="proj-tag">健康监控</span><span class="proj-tag">容灾设计</span></div>
+        </div>
+      </div>
+      <div class="proj-card reveal" onclick="openDetail('p6')">
+        <div class="proj-card-inner">
+          <div class="proj-header"><span class="proj-icon">🎙️</span><span class="proj-badge badge-ai">AI分身</span></div>
+          <div class="proj-name">Marvis Vox · 桌面AI语音助手</div>
+          <div class="proj-desc">基于 VoxCPM 2 + RTX 3060 构建本地 TTS 语音助手，3阶段研发历程、5套自研脚本。通过 bridge.py 文件监听架构实现文本到语音的实时桥接，搭配声音克隆技术实现自然中文语音合成。经历3种方案8轮测试。</div>
+          <div class="proj-footer"><span class="proj-tag">VoxCPM 2</span><span class="proj-tag">PyTorch CUDA</span><span class="proj-tag">声音克隆</span><span class="proj-tag">本地TTS</span><span class="proj-tag">文件监听架构</span></div>
+        </div>
+      </div>
+      <div class="proj-card reveal" onclick="openDetail('p7')">
+        <div class="proj-card-inner">
+          <div class="proj-header"><span class="proj-icon">🧠</span><span class="proj-badge badge-dev">工具</span></div>
+          <div class="proj-name">AI 知识蒸馏工具 v2.0</div>
+          <div class="proj-desc">基于 Vibe Coding 理念，用 AI 协同开发的知识萃取工具。支持自动发现目录与手动指定双入口，内置 YAML 动态评分算法与 OCR 截图识别，PyInstaller 打包为单文件 EXE。实现从长文档到结构化笔记的一键转化。</div>
+          <div class="proj-footer"><span class="proj-tag">Python</span><span class="proj-tag">PyInstaller</span><span class="proj-tag">Vibe Coding</span><span class="proj-tag">OCR识别</span><span class="proj-tag">YAML评分算法</span></div>
+        </div>
+      </div>
+      <div class="proj-card reveal" onclick="openDetail('p8')">
+        <div class="proj-card-inner">
+          <div class="proj-header"><span class="proj-icon">🎯</span><span class="proj-badge badge-dev">咨询落地</span></div>
+          <div class="proj-name">AI 产品咨询与全栈落地</div>
+          <div class="proj-desc">以 AI 产品理解力为底座，面向不同行业非技术方提供从需求翻译到系统交付的全链路服务。房产获客方向：搭建荔枝租房全栈平台，集成微信机器人+GitHub Pages；跨境电商方向：为两家团队完成 Claude+DeepSeek 工具链选型、浏览器自动化与安全架构设计；金融信息方向：移植 Night 日报系统，实现新闻抓取→智谱+混元模型总结→网页可视化的自动化流水线。横跨 3 个行业 4 个客户，均独立完成从 0 到上线。</div>
+          <div class="proj-footer"><span class="proj-tag">需求翻译</span><span class="proj-tag">工具链选型</span><span class="proj-tag">全栈开发</span><span class="proj-tag">安全架构</span><span class="proj-tag">部署交付</span></div>
+        </div>
+      </div>
+      <div class="proj-card reveal" onclick="openDetail('p9')">
+        <div class="proj-card-inner">
+          <div class="proj-header"><span class="proj-icon">📚</span><span class="proj-badge badge-ai">AI学习</span></div>
+          <div class="proj-name">自主学习体系搭建</div>
+          <div class="proj-desc">从 WorkBuddy 知识库和 GitHub 开源社区中主动提取学习资源，搭建 AI 私教管道。通过 Prompt 工程将 14 模块课程大纲结构化，借助 Marvis 调用 DeepSeek API 完成全链路 AI 教学；同时拉取部署 DataWhale Easy-Vibe 教程，建立社区知识萃取与自建学习系统的能力。</div>
+          <div class="proj-footer"><span class="proj-tag">自主学习</span><span class="proj-tag">知识萃取</span><span class="proj-tag">Prompt工程</span><span class="proj-tag">DeepSeek</span><span class="proj-tag">Vibe Coding</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-row reveal">
+      <div class="stat-card"><div class="stat-num" style="color:var(--accent)">9+</div><div class="stat-label">AI工具实战项目</div></div>
+      <div class="stat-card"><div class="stat-num" style="color:var(--accent2)">v4</div><div class="stat-label">数字分身迭代版本</div></div>
+      <div class="stat-card"><div class="stat-num" style="color:var(--accent3)">50+</div><div class="stat-label">效果图产出</div></div>
+      <div class="stat-card"><div class="stat-num" style="color:var(--accent4)">97%</div><div class="stat-label">自动化系统成功率</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow">05 · 关于我</span>
+      <h2 class="sec-title"><em>关于我</em></h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p>我是梁正俣，2004年生，广东云浮人，广州商学院2026届本科。</p>
+        <p>我相信 AI 不只是工具，而是一种新的工作方式。作为 AI 工作流工具的深度用户，我<span class="highlight">用 AI 工具管理自己的日常工作</span> —— 从备份系统到每日早报，从自动化脚本到数字分身，这些都是我把 AI 落地的实际证明。</p>
+        <p>在新豪轩管培生期间，我把 ComfyUI SDXL 引入到传统制造业的产品展示环节，<span class="highlight">用一台 RTX 3060 完成了效果图的批量生产</span>，解决了内部出图慢的瓶颈，将交付周期从 5-7 天压缩至 1 天内，效率提升约 80%。</p>
+        <p>我秉持<span class="highlight">"边活边存"的数字自我保存哲学</span>，把自己的成长轨迹、工作习惯、思考方式都沉淀进系统里，让 AI 真正成为了解我、帮助我的长期伙伴。我的开发能力主要依赖 AI 协同合作，这恰恰说明我懂得如何高效利用 AI 工具，这正是 AI 应用岗位最需要的能力。</p>
+      </div>
+      <div class="about-values">
+        <div class="value-card"><div class="value-icon">🔧</div><div class="value-text"><strong>动手落地</strong><span>从来不停留在"了解"层面 —— 工具不好用我就自己改进，流程不顺畅我就自己写脚本自动化。</span></div></div>
+        <div class="value-card"><div class="value-icon">🧠</div><div class="value-text"><strong>快速学习</strong><span>ComfyUI、Claude Code、MiniMax API、DeepSeek…每次遇到新工具，我的目标是一周内进入生产环境。</span></div></div>
+        <div class="value-card"><div class="value-icon">📐</div><div class="value-text"><strong>工程化思维</strong><span>喜欢把重复的事情做成系统。备份、早报、数字分身同步…能自动化的绝对不手动。</span></div></div>
+        <div class="value-card"><div class="value-icon">🎯</div><div class="value-text"><strong>结果导向</strong><span>我在乎的是交付，不是过程有多复杂。一份图册、一个脚本、一套工作流，都需要能跑起来才算完。</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--bg-card);">
+  <div class="container">
+    <div class="contact-inner">
+      <span class="eyebrow" style="justify-content:center">06 · 联系我</span>
+      <h2 class="sec-title">期待与你<em>合作</em></h2>
+      <div class="divider" style="margin:16px auto"></div>
+      <p class="sec-desc" style="margin:0 auto 36px">正在寻找广深地区 AI 应用 / 产品运营 / 内容运营方向的应届生岗位。欢迎随时发起对话，我反应很快的。</p>
+
+      <div class="contact-links">
+        <a href="#" class="contact-link"><span class="contact-link-icon">📱</span><span>微信：Lzy-_2004</span></a>
+        <a href="mailto:1724267009@qq.com" class="contact-link"><span class="contact-link-icon">📧</span><span>邮箱：1724267009@qq.com</span></a>
+      </div>
+
+      <div class="contact-note">梁正俣 · 落枕雨 · 广州商学院2026届 · AI产品方向<br>本页面由 AI 协同生成，内容真实有效</div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="container">📧 1724267009@qq.com | © 2026 梁正俣 · Liang Zhengyu · Nitefish</div></footer>
+
+<script>
+(function(){
+  // ===== REVEAL ON SCROLL =====
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); observer.unobserve(e.target); }});
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ===== HEADER SCROLL =====
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ===== SECTION INDEX ACTIVE =====
+  const idxLinks = document.querySelectorAll('.section-index a');
+  const sectionMap = new Map();
+  idxLinks.forEach(a => {
+    const el = document.getElementById(a.dataset.target);
+    if(el) sectionMap.set(el, a);
+  });
+  const io2 = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      const link = sectionMap.get(e.target);
+      if(!link) return;
+      if(e.isIntersecting){
+        idxLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  sectionMap.forEach((_, el) => io2.observe(el));
+
+  // ===== TYPEWRITER =====
+  const titles = ['AI 应用', '产品运营', 'AI 内容', '自动化'];
+  const el = document.querySelector('.hero-highlight');
+  if(el){
+    let i = 0, j = 0, deleting = false;
+    function type(){
+      const cur = titles[i];
+      if(!deleting){
+        el.textContent = cur.slice(0, j+1); j++;
+        if(j === cur.length){ deleting = true; setTimeout(type, 1800); return; }
+      } else {
+        el.textContent = cur.slice(0, j-1); j--;
+        if(j === 0){ deleting = false; i = (i+1) % titles.length; setTimeout(type, 300); return; }
+      }
+      setTimeout(type, deleting ? 60 : 100);
+    }
+    setTimeout(type, 800);
+  }
+
+  // ===== SMOOTH SCROLL =====
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if(target){ e.preventDefault(); target.scrollIntoView({ behavior:'smooth', block:'start' }); }
+    });
+  });
+})();
+</script>
+
+<div class="detail-overlay">
+  <div class="detail-nav">
+    <span class="detail-nav-logo">项目详情</span>
+    <a class="detail-nav-close" href="javascript:void(0)">&larr; 返回首页</a>
+  </div>
+  <div class="container" style="padding-top:24px;padding-bottom:60px;">
+    <h1 class="detail-page-title">实战项目流程</h1>
+    <p class="detail-page-sub">每个项目都从真实需求出发。以下是 9 个项目的创作动机、实现路径与收获。</p>
+    <div class="detail-toc">
+      <a data-pid="p1" href="javascript:void(0)">🐟 数字分身</a>
+      <a data-pid="p2" href="javascript:void(0)">📰 每日早报</a>
+      <a data-pid="p3" href="javascript:void(0)">🚪 AI效果图</a>
+      <a data-pid="p4" href="javascript:void(0)">📄 简历网站</a>
+      <a data-pid="p5" href="javascript:void(0)">☁️ 备份系统</a>
+      <a data-pid="p6" href="javascript:void(0)">🎙️ Marvis Vox</a>
+      <a data-pid="p7" href="javascript:void(0)">🧠 知识蒸馏</a>
+      <a data-pid="p8" href="javascript:void(0)">🎯 咨询落地</a>
+      <a data-pid="p9" href="javascript:void(0)">📚 自主学习体系</a>
+    </div>
+    
+    <h1 class="page-title">实战项目流程</h1>
+    <p class="page-sub">每个项目都从真实需求出发。以下是 9 个项目的创作动机、实现路径与收获。</p>
+    <div class="toc">
+      <a href="#p1">🐟 数字分身</a>
+      <a href="#p2">📰 每日早报</a>
+      <a href="#p3">🚪 AI效果图</a>
+      <a href="#p4">📄 简历网站</a>
+      <a href="#p5">☁️ 备份系统</a>
+      <a href="#p6">🎙️ Marvis Vox</a>
+      <a href="#p7">🧠 知识蒸馏</a>
+      <a href="#p8">🎯 咨询落地</a>
+      <a href="#p9">📚 自主学习体系</a>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+<!-- P1: Night🐟 -->
+<div class="detail-proj-section" id="p1">
+  <a href="#" class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">↑ 回到顶部</a>
+  <div class="proj-header">
+    <span class="proj-icon">🐟</span>
+    <div class="proj-meta">
+      <div class="proj-name">Night🐟 数字分身系统</div>
+      <div class="proj-tagline">基于 WorkBuddy 的个人 AI 数字分身 · v4.11</div>
+    </div>
+  </div>
+
+  <div class="detail-module">
+    <div class="detail-module-title detail-mt-inspire">创作灵感</div>
+    <div class="detail-module-body">
+      <p>在和 AI 助手的日常协作中，我发现一个矛盾：聊得越多，AI 忘得越快。每次新对话都是从零开始，昨天的讨论成果、上周的决策偏好、上个月的成长轨迹——全部丢失。</p>
+      <p>我信奉「边活边存」的数字自我保存哲学。既然我的工作习惯、思考方式、人格特征每天都通过对话记录下来，为什么不让 AI 持续学习这些数据，成为一个真正了解我的长期伙伴？这就是 Night🐟 数字分身的起源。</p>
+    </div>
+  </div>
+
+  <div class="detail-module">
+    <div class="detail-module-title detail-mt-how">怎么做的</div>
+    <div class="detail-module-body">
+      <p>基于 WorkBuddy Agent 框架，设计了一套 Skill 工作流体系。核心是 night-3 自动化脚本，每日 17:30 定时触发：自动提取当天所有对话记录 → 摘要压缩 → 主题聚类 → 归因到对应话题线 → 持久化存储到长期记忆库。</p>
+      <p>最大难点是「跨天对话归因」：用户在周一和周五聊的可能是同一件事，但分散在不同会话中。我通过时间戳关联 + 关键词相似度 + 话题向量聚类，实现了跨天话题的自动合并。从 v1 到 v4.11 迭代了 4 个大版本，每次优化记忆提取精度和归因准确度。</p>
+      <div class="detail-tech-tags">
+        <span class="detail-tech-tag hl">WorkBuddy Agent</span>
+        <span class="detail-tech-tag hl">自动化脚本</span>
+        <span class="detail-tech-tag">长期记忆</span>
+        <span class="detail-tech-tag">Skill设计</span>
+        <span class="detail-tech-tag">Cron调度</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-module">
+    <div class="detail-module-title detail-mt-result">得到了什么</div>
+    <div class="detail-module-body">
+      <p>现在我的 AI 助手真的「认识」我了——它知道我的工作偏好、常用工具、正在进行的项目、甚至我写代码的风格。每次开启新对话，它载入的不仅仅是系统指令，而是我过去数月的数字轨迹。</p>
+      <p>更深层的收获是工程化思维的强化：把一个抽象的「让 AI 记住我」需求，拆解成可量化的技术指标（记忆提取率、归因准确率、存储压缩比），然后用自动化脚本持续迭代优化。这种将模糊需求落地为可度量系统的能力，正是 AI 应用岗最需要的。</p>
+    </div>
+  </div>
+</div>
+
+<!-- P2: 每日早报 -->
+<div class="detail-proj-section" id="p2">
+  <a href="#" class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">↑ 回到顶部</a>
+  <div class="proj-header">
+    <span class="proj-icon">📰</span>
+    <div class="proj-meta">
+      <div class="proj-name">每日早报自动化系统</div>
+      <div class="proj-tagline">每天 8:05 自动运行 · 20+ 天零失败</div>
+    </div>
+  </div>
+
+  <div class="detail-module">
+    <div class="detail-module-title detail-mt-inspire">创作灵感</div>
+    <div class="detail-module-body">
+      <p>每天早上我需要三样信息：今天天气怎么样（决定穿什么）、SSD 价格有没有波动（我在关注硬件行情）、最近有什么热点新闻。这些信息分散在不同的 App 和网站里，每天早上手动刷一遍至少花 10 分钟。</p>
+      <p>既然我是一个自动化深度用户，为什么不把这些信息整合成一份自动生成、每天准时送达的早报？这既是解决自己的刚需，也是一个展示多源数据聚合工程能力的项目。</p>
+    </div>
+  </div>
+
+  <div class="detail-module">
+    <div class="detail-module-title detail-mt-how">怎么做的</div>
+    <div class="detail-module-body">
+      <p>设计了三模块数据流架构：天气模块调用 Amap API 获取当日天气预报和生活指数；价格监控模块多源交叉验证（ZOL / 京东 / 新浪）爬取 SSD 实时价格并标注异常波动；热搜模块抓取微博热搜 Top 10 去重排序。</p>
+      <p>所有数据清洗后以 Markdown 格式整合输出。Cron 每日 8:05 自动触发。稳定性方面做了三重保障：API 调用失败自动重试 3 次（间隔递增）、单源超时自动切换备用源、每次运行生成结构化日志便于追溯。</p>
+      <div class="detail-tech-tags">
+        <span class="detail-tech-tag hl">Amap API</span>
+        <span class="detail-tech-tag hl">多源数据聚合</span>
+        <span class="detail-tech-tag hl">Cron调度</span>
+        <span class="detail-tech-tag">价格监控</span>
+        <span class="detail-tech-tag">Markdown</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-module">
+    <div class="detail-module-title detail-mt-result">得到了什么</div>
+    <div class="detail-module-body">
+      <p>运行 20+ 天零失败，每天早上一打开就能看到整齐的早报。最重要的是，这个项目锻炼了「多源数据聚合 + 容错设计」的工程能力——不是简单地调一个 API，而是面对真实网络中各种不稳定因素，设计出可靠的系统。</p>
+      <p>这种多源降级、异常自动恢复的设计思路，在企业的数据采集和监控系统中是标配，我通过这个项目提前积累了相关经验。</p>
+    </div>
+  </div>
+</div>
+
+<!-- P3: AI效果图 -->
+<div class="detail-proj-section" id="p3">
+  <a href="#" class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">↑ 回到顶部</a>
+  <div class="proj-header">
+    <span class="proj-icon">🚪</span>
+    <div class="proj-meta">
+      <div class="proj-name">入户门 AI 效果图生产线</div>
+      <div class="proj-tagline">ComfyUI SDXL · 6 种材质 · 商业交付 50+ 张</div>
+    </div>
+  </div>
+
+  <div class="detail-module">
+    <div class="detail-module-title detail-mt-inspire">创作灵感</div>
+    <div class="detail-module-body">
+      <p>在新豪轩管培生期间，我发现一个制造业的真实痛点：入户门产品效果图的出图周期太长了。传统流程是拍照 → 发设计公司 → 3D 建模渲染 → 返稿修改，一套下来 5-7 天。展会物料、销售图册常常因为等图而延误。</p>
+      <p>我刚好有一台 RTX 3060，也玩过 Stable Diffusion。为什么不把 AI 图像生成引入到传统制造业的产品展示环节？如果能用 AI 把出图周期压缩到 1 天内，对销售效率是质的提升。</p>
+    </div>
+  </div>
+
+  <div class="detail-module">
+    <div class="detail-module-title detail-mt-how">怎么做的</div>
+    <div class="detail-module-body">
+      <p>在本地 RTX 3060 上部署 ComfyUI + SDXL 模型（Juggernaut XL / RealVisXL），搭建稳定可复用的节点工作流。为贝壳木纹、白色岩板、海石纹肌理等 6 种入户门材质建立标准化提示词模板库，覆盖不同光线和角度场景。</p>
+      <p>工作流设计为「输入产品底图 → ControlNet 控制结构 → 材质提示词渲染 → 后期精修」，一键执行。单日可产出 10+ 张商业级效果图，客户反馈后 30 分钟内可出修改稿。累计产出 50+ 张，直接用于销售图册和博览会物料。</p>
+      <div class="detail-tech-tags">
+        <span class="detail-tech-tag hl">ComfyUI SDXL</span>
+        <span class="detail-tech-tag hl">提示词工程</span>
+        <span class="detail-tech-tag hl">商业交付</span>
+        <span class="detail-tech-tag">Juggernaut XL</span>
+        <span class="detail-tech-tag">LoRA</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-module">
+    <div class="detail-module-title detail-mt-result">得到了什么</div>
+    <div class="detail-module-body">
+      <p>最直接的成果：将入户门效果图交付周期从 5-7 天压缩到 1 天内，成本从外部设计公司报价转为内部零成本。更重要的是证明了一件事——AI 不是玩具，在传统制造业中真的有商业价值。</p>
+      <p>此外，建立标准化提示词模板库的方法论，让我深刻理解了「将创意工作流程化」的重要性。不是每次从头写提示词，而是把成功案例沉淀为可复用的模板，这才是 AI 落地的正道。</p>
+    </div>
+  </div>
+</div>
+
+<!-- P4: 简历网站 -->
+<div class="detail-proj-section" id="p4">
+  <a href="#" class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">↑ 回到顶部</a>
+  <div class="proj-header">
+    <span class="proj-icon">📄</span>
+    <div class="proj-meta">
+      <div class="proj-name">个人电子简历网站</div>
+      <div class="proj-tagline">AI 协同编程 · 深色科技风 · 纯静态部署</div>
+    </div>
+  </div>
+
+  <div class="detail-module">
+    <div class="detail-module-title detail-mt-inspire">创作灵感</div>
+    <div class="detail-module-body">
+      <p>2026 届应届生求职，一份 PDF 简历不够用。我想用一个在线网站来展示我的项目和能力——不是干巴巴的技能列表，而是可以互动、有视觉冲击力的作品集。</p>
+      <p>同时，我也想验证一个想法：一个不会写代码的人，借助 AI 编程工具，能在多大程度上完成一个完整的网页项目？从设计到部署，全部靠 AI 协同完成。这个网站本身就是我 AI 协同开发能力的活名片。</p>
+    </div>
+  </div>
+
+  <div class="detail-module">
+    <div class="detail-module-title detail-mt-how">怎么做的</div>
+    <div class="detail-module-body">
+      <p>全程 AI 协同编程，使用纯 HTML/CSS/JS 单文件架构。迭代了 4 个版本：v1 基础 HTML 骨架，v2 深色科技风视觉升级（CSS 变量体系 + 渐变配色 + 玻璃态卡片），v3 动画增强（打字机效果 + 滚动渐现 + 毛玻璃导航），v4 持续补充项目内容。</p>
+      <p>部署极简：GitHub Pages 自动部署，本地编辑完 push 到 GitHub，1 分钟内上线。完全没有服务器配置、域名解析等传统部署的复杂流程。每次要补充新项目或修改描述，改一行 HTML push 一下就行。</p>
+      <div class="detail-tech-tags">
+        <span class="detail-tech-tag hl">HTML/CSS/JS</span>
+        <span class="detail-tech-tag hl">AI 协同编程</span>
+        <span class="detail-tech-tag hl">GitHub Pages</span>
+        <span class="detail-tech-tag">响应式设计</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-module">
+    <div class="detail-module-title detail-mt-result">得到了什么</div>
+    <div class="detail-module-body">
+      <p>一个持续迭代的在线简历站，7 个项目卡片 + 完整技能图谱 + 时间线经历。更重要的是，它证明了 AI 协同开发的可行性——我从不会写 CSS 动画，到做出打字机效果和毛玻璃导航，全程靠和 AI 对话完成。</p>
+      <p>这种「不会写代码但能交付产品」的能力，正是 AI 时代产品岗的核心竞争力。我不需要成为全栈工程师，但我知道怎么指挥 AI 做出工程师级别的作品。</p>
+    </div>
+  </div>
+</div>
+
+<!-- P5: 备份系统 -->
+<div class="detail-proj-section" id="p5">
+  <a href="#" class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">↑ 回到顶部</a>
+  <div class="proj-header">
+    <span class="proj-icon">☁️</span>
+    <div class="proj-meta">
+      <div class="proj-name">听雨眠备份系统</div>
+      <div class="proj-tagline">每日双次自动备份 · 成功率 97%+ · 本地+云端</div>
+    </div>
+  </div>
+
+  <div class="detail-module">
+    <div class="detail-module-title detail-mt-inspire">创作灵感</div>
+    <div class="detail-module-body">
+      <p>我的工作流越来越依赖电脑上的本地文件：ComfyUI 模型、项目代码、对话记录、工作文档……这些东西一旦丢失，损失无法估量。手动备份太容易忘，而且容易漏。</p>
+      <p>备份这件事，必须是零人工干预的自动化流程。我信奉一个原则：需要人工记住去做的系统，就是不可靠的系统。所以设计了一个完全自动化的双重备份方案。</p>
+    </div>
+  </div>
+
+  <div class="detail-module">
+    <div class="detail-module-title detail-mt-how">怎么做的</div>
+    <div class="detail-module-body">
+      <p>四层架构设计：触发层（Cron 每日 9:00+15:00 双次调度）→ 压缩层（带时间戳 ZIP 打包，增量策略减少冗余）→ 传输层（每 3 天自动同步微云云端）→ 监控层（健康检查脚本每日验证备份完整性，异常告警）。</p>
+      <p>保留策略：本地保留最近 7 天备份，云端保留最近 4 次，防止误删同时节省空间。网络波动导致的失败自动重试，确保不丢一次备份。</p>
+      <div class="detail-tech-tags">
+        <span class="detail-tech-tag hl">自动化调度</span>
+        <span class="detail-tech-tag hl">微云备份</span>
+        <span class="detail-tech-tag hl">健康监控</span>
+        <span class="detail-tech-tag">容灾设计</span>
+        <span class="detail-tech-tag">Shell脚本</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-module">
+    <div class="detail-module-title detail-mt-result">得到了什么</div>
+    <div class="detail-module-body">
+      <p>成功率 97%+ 的稳定运行系统，再也不用担心电脑硬盘挂了或者误删文件。更重要的收获是容灾思维的建立：任何系统都会出问题，关键不是不出问题，而是出了问题后能快速恢复。</p>
+      <p>这个项目中积累的自动化调度 + 健康监控 + 容灾恢复的设计模式，可以迁移到任何需要稳定运行的自动化系统中。</p>
+    </div>
+  </div>
+</div>
+
+<!-- P6: Marvis Vox -->
+<div class="detail-proj-section" id="p6">
+  <a href="#" class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">↑ 回到顶部</a>
+  <div class="proj-header">
+    <span class="proj-icon">🎙️</span>
+    <div class="proj-meta">
+      <div class="proj-name">Marvis Vox · 桌面AI语音助手</div>
+      <div class="proj-tagline">VoxCPM 2 + RTX 3060 · 声音克隆 · 本地 TTS</div>
+    </div>
+  </div>
+
+  <div class="detail-module">
+    <div class="detail-module-title detail-mt-inspire">创作灵感</div>
+    <div class="detail-module-body">
+      <p>我和 AI 助手的交互已经非常深入了，但始终缺少一个维度：声音。文字对话再高效，也没有语音交流的那种「人在身边」的感觉。我想让我的 AI 助手能说话——不是机械的 TTS 朗读，而是自然、有温度的中文语音。</p>
+      <p>市面上的 TTS 方案要么付费（API 按字符计费很贵），要么质量差（中文韵律奇怪），要么需要联网（我的 AI 助手是本地跑的）。我需要一个完全本地运行、中文自然、能声音克隆的方案。</p>
+    </div>
+  </div>
+
+  <div class="detail-module">
+    <div class="detail-module-title detail-mt-how">怎么做的</div>
+    <div class="detail-module-body">
+      <p>对比了 3 种方案后选择 VoxCPM 2（中文质量高+RTX 3060 完美兼容）。搭建 CUDA 12.1 + PyTorch 2.x 环境，解决 Windows 下的依赖冲突。设计 bridge.py 文件监听架构：Marvis 输出文本 → speak.txt → VoxCPM 2 实时读取合成语音，异步非阻塞。</p>
+      <p>录制参考音频进行声音克隆——音色提取 → 模型微调，保留原声的语速和情感特征。开发了 5 套运维脚本（启动/停止/桥接/监控/配置），经历 8 轮测试覆盖文本长度边界、中英混合、特殊字符、长时间运行稳定性。</p>
+      <div class="detail-tech-tags">
+        <span class="detail-tech-tag hl">VoxCPM 2</span>
+        <span class="detail-tech-tag hl">PyTorch CUDA</span>
+        <span class="detail-tech-tag hl">声音克隆</span>
+        <span class="detail-tech-tag hl">本地TTS</span>
+        <span class="detail-tech-tag">文件监听架构</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-module">
+    <div class="detail-module-title detail-mt-result">得到了什么</div>
+    <div class="detail-module-body">
+      <p>一个稳定可用的桌面级 AI 语音交互终端，我的 AI 助手现在真的能「说话」了——自然的中文语音，不是机械朗读，而是有温度的声音。</p>
+      <p>这个项目最宝贵的收获是「技术选型」能力：不是选最好的技术，而是选最适合当前约束条件的技术。VoxCPM 2 不是最强的 TTS 模型，但它是我 RTX 3060 + Windows + 本地运行约束下的最优解。这种在有限资源下做最优决策的能力，在产品岗位中至关重要。</p>
+    </div>
+  </div>
+</div>
+
+<!-- P7: 知识蒸馏 -->
+<div class="detail-proj-section" id="p7">
+  <a href="#" class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">↑ 回到顶部</a>
+  <div class="proj-header">
+    <span class="proj-icon">🧠</span>
+    <div class="proj-meta">
+      <div class="proj-name">AI 知识蒸馏工具 v2.0</div>
+      <div class="proj-tagline">Vibe Coding · YAML 评分引擎 · PyInstaller EXE</div>
+    </div>
+  </div>
+
+  <div class="detail-module">
+    <div class="detail-module-title detail-mt-inspire">创作灵感</div>
+    <div class="detail-module-body">
+      <p>我经常需要看长文档——教程、技术文档、论文、会议记录。这些东西动辄几千字，但真正有用的核心知识点可能只有 20%。每次手动提炼笔记太耗时，而且容易漏掉关键信息。</p>
+      <p>我想做一个工具：把长文档丢进去，自动吐出一份结构化的知识笔记，只保留核心知识点。如果能打包成 EXE 就更好了，可以分享给同样有这个需求的同事和朋友。</p>
+    </div>
+  </div>
+
+  <div class="detail-module">
+    <div class="detail-module-title detail-mt-how">怎么做的</div>
+    <div class="detail-module-body">
+      <p>采用 Vibe Coding 理念全程 AI 辅助开发。双入口设计：自动发现模式（扫描目录下所有文档）和手动指定模式（拖入文件或截图 OCR）。解析层支持 TXT/Markdown/PDF 文本提取 + 截图 OCR（pytesseract）。</p>
+      <p>核心创新是 YAML 配置驱动的动态评分算法——定义知识点权重、关键词匹配规则和信息密度阈值，非技术人员也能通过修改 YAML 文件调整评分策略。最后用 PyInstaller 打包为单文件 EXE，从概念到可用工具仅用 3 天。</p>
+      <div class="detail-tech-tags">
+        <span class="detail-tech-tag hl">Python</span>
+        <span class="detail-tech-tag hl">PyInstaller</span>
+        <span class="detail-tech-tag hl">Vibe Coding</span>
+        <span class="detail-tech-tag hl">OCR识别</span>
+        <span class="detail-tech-tag">YAML评分算法</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-module">
+    <div class="detail-module-title detail-mt-result">得到了什么</div>
+    <div class="detail-module-body">
+      <p>一个可用的知识萃取工具，长文档变成结构化笔记只需一键。更重要的是验证了 Vibe Coding 的效率——从想法到可用的 EXE 只用 3 天，这在传统开发流程中不可想象。</p>
+      <p>YAML 配置驱动的设计思路也让我意识到：「让非技术人员能调参数」比「写出完美算法」更重要。产品的可配置性决定了它的实用范围和生命周期。</p>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="detail-proj-section" id="p8">
+  <a href="#" class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">↑ 回到顶部</a>
+  <div class="proj-header">
+    <span class="proj-icon">🎯</span>
+    <div class="proj-meta">
+      <div class="proj-name">AI 产品咨询与全栈落地</div>
+      <div class="proj-tagline">需求翻译 · 工具链选型 · 全栈交付 · 安全架构</div>
+    </div>
+  </div>
+
+  <div class="detail-module">
+    <div class="detail-module-title detail-mt-inspire">创作灵感</div>
+    <div class="detail-module-body">
+      <p>我身边有不少非技术背景的朋友和客户：做房产的、做跨境电商的、做金融信息的。他们都有真实的工作流痛点，但不清楚 AI 能做什么、怎么做。我发现自己能听懂他们的业务需求，又能把需求翻译成技术方案——这是一条被严重低估的能力。</p>
+      <p>于是我开始主动接这类咨询+落地项目：不卖工具，不卖课程，直接帮他们把问题解决到上线为止。</p>
+    </div>
+  </div>
+
+  <div class="detail-module">
+    <div class="detail-module-title detail-mt-how">怎么做的</div>
+    <div class="detail-module-body">
+      <p><strong>荔枝租房 · 房产获客</strong>：客户需要自动化获客+报账。拆解为 Excel 模板+微信机器人替代方案（小程序因资质不可行），经框架选型（OpenClaw/WorkBuddy/Tel）、云端模型配置、Claude 辅助全栈开发后部署于 GitHub Pages，集成群聊图片识别与指令响应。</p>
+      <div class="ss-gallery">
+        <div class="ss-item"><img src="img/p8-01-wxpush.png" alt="微信机器人自动化推送逻辑" class="screenshot"><div class="ss-caption">自动化脚本推送逻辑</div></div>
+        <div class="ss-item"><img src="img/p8-02-success.png" alt="群聊中成功接收机器人推送" class="screenshot"><div class="ss-caption">群聊接收确认：发出来了</div></div>
+        <div class="ss-item"><img src="img/p8-03-deploy.jpg" alt="荔枝租房GitHub Pages上线" class="screenshot"><div class="ss-caption">GitHub Pages 部署上线</div></div>
+      </div>
+      <p><strong>跨境电商工具链（2家）</strong>：为跨境电商团队设计 Claude + DeepSeek 组合方案，解决表单自动填写（浏览器自动化）、翻墙访问、代码乱码等实操问题。为张栩团队进一步引入 buddy + 龙虾 + minimax 技术栈，明确数据流分工（技术团队生成表格，运营不直接操作 Listing），设定「不造成数据/文件损伤」的安全边界条件，以自身被恶意 Skill 删文件的教训做风险复盘。</p>
+      <div class="ss-gallery">
+        <div class="ss-item"><img src="img/p8-04-tools.png" alt="Claude+DeepSeek浏览器扩展工具讨论" class="screenshot"><div class="ss-caption">工具链选型讨论</div></div>
+        <div class="ss-item"><img src="img/p8-05-safety.png" alt="强调自动化不损伤数据的安全边界" class="screenshot"><div class="ss-caption">安全边界：不损伤数据与文件</div></div>
+      </div>
+      <p><strong>Night 日报系统移植</strong>：将自研的新闻聚合日报系统（智谱+混元模型，v2 版本）移植给金融信息方向用户，实现新闻自动抓取→模型总结→网页可视化全流程，展示后台「技能包」模块化架构教学，对方独立完成部署。</p>
+      <div class="ss-gallery">
+        <div class="ss-item"><img src="img/p8-06-webview.png" alt="落枕雨每日早报可视化页面" class="screenshot"><div class="ss-caption">日报网页可视化成品</div></div>
+      </div>
+      <div class="detail-tech-tags">
+        <span class="detail-tech-tag hl">Claude</span>
+        <span class="detail-tech-tag hl">DeepSeek</span>
+        <span class="detail-tech-tag hl">GitHub Pages</span>
+        <span class="detail-tech-tag hl">微信机器人</span>
+        <span class="detail-tech-tag">智谱+混元</span>
+        <span class="detail-tech-tag">浏览器自动化</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-module">
+    <div class="detail-module-title detail-mt-result">得到了什么</div>
+    <div class="detail-module-body">
+      <p>横跨 3 个行业、4 个客户，均独立完成从需求翻译到系统上线的全链路交付。更深层的收获是：<strong>「把 AI 产品理解力翻译成业务价值」</strong>本身就是一种稀缺能力——不懂 AI 的人说不清自己要什么，懂 AI 的人听不懂行业话，而我刚好卡在这个交叉点上。</p>
+      <p>安全第一的工作流原则也在这批项目中沉淀下来：任何自动化方案必须预设「不损伤已有数据」的边界条件，这个原则后来成为我所有技术交付的默认前提。</p>
+    </div>
+  </div>
+
+  </div>
+
+<!-- P9: 自主学习体系搭建 -->
+<div class="detail-proj-section" id="p9">
+  <a href="#" class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">↑ 回到顶部</a>
+  <div class="proj-header">
+    <span class="proj-icon">📚</span>
+    <div class="proj-meta">
+      <div class="proj-name">自主学习体系搭建</div>
+      <div class="proj-tagline">Prompt工程 · DeepSeek API · 知识萃取 · Vibe Coding</div>
+    </div>
+  </div>
+
+  <div class="detail-module">
+    <div class="detail-module-title detail-mt-inspire">创作灵感</div>
+    <div class="detail-module-body">
+      <p>传统学习路径是被动的——课程推到你面前，你跟着学。但我在 WorkBuddy 知识库和 GitHub 开源社区中发现了大量优质学习资源，它们散落在各处，没有人把它们串成课程。我不想被动等课程喂到嘴边，我想搭建一套属于自己的 AI 私教管道：从社区中主动萃取知识，用 Prompt 工程构建教学系统，让 AI 按我的节奏和需求来教。</p>
+      <p>这种「自下而上」的学习方式更符合我的风格——不是别人告诉我学什么，而是我自己发现学什么、怎么学。</p>
+    </div>
+  </div>
+
+  <div class="detail-module">
+    <div class="detail-module-title detail-mt-how">怎么做的</div>
+    <div class="detail-module-body">
+      <p><strong>AI PM 私教系统</strong>：从 WorkBuddy 会话中提取「AI产品经理自学Prompt-Marvist版.md」，将 14 模块课程大纲结构化写入教学 Prompt。通过 Marvis 调用 DeepSeek API 构建 AI 私教，分 6 次会话完成从大模型认知到简历面试的全链路教学，总计约 12-16 学时。</p>
+      <p><strong>开源教程本地化</strong>：从 GitHub 拉取 DataWhale Easy-Vibe 项目（Vibe Coding 交互式教程），部署到本机备用，实现离线可用的学习环境。</p>
+      <div class="detail-tech-tags">
+        <span class="detail-tech-tag hl">Prompt工程</span>
+        <span class="detail-tech-tag hl">DeepSeek API</span>
+        <span class="detail-tech-tag hl">WorkBuddy</span>
+        <span class="detail-tech-tag">Marvis</span>
+        <span class="detail-tech-tag">Vibe Coding</span>
+        <span class="detail-tech-tag">GitHub</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-module">
+    <div class="detail-module-title detail-mt-result">得到了什么</div>
+    <div class="detail-module-body">
+      <p>两门课程就绪待启动：AI PM 私教系统（14 模块 / 12-16h）覆盖从大模型认知到简历面试的全链路教学内容；Easy-Vibe 教程完成本地部署，随时可以开始 Vibe Coding 实战训练。</p>
+      <p>更重要的是，我建立了一套可复用的方法论：<strong>主动从社区萃取知识 + Prompt 工程自建学习系统</strong>。这套能力不局限于某一门课程——未来任何领域的学习，我都可以用同样的方式快速搭建属于自己的 AI 私教管道。</p>
+    </div>
+  </div>
+</div>
+
+  <div class="detail-footer">
+    <p>梁正俣 · 落枕雨 · 2026 届应届毕业生 | <a href="#" class="detail-nav-close" style="color:var(--accent);text-decoration:none">返回首页</a></p>
+  </div>
+</div>
+
+<script>
+(function() {
+  var overlay = document.querySelector('.detail-overlay');
+  var allSections = overlay.querySelectorAll('.detail-proj-section');
+  var tocLinks = overlay.querySelectorAll('.detail-toc a');
+
+  function showProject(pid) {
+    allSections.forEach(function(s) {
+      s.style.display = (s.id === pid) ? 'block' : 'none';
+    });
+    tocLinks.forEach(function(a) {
+      a.classList.toggle('active', a.getAttribute('data-pid') === pid);
+    });
+    overlay.scrollTop = 0;
+    history.replaceState(null, '', '#' + pid);
+  }
+
+  overlay.querySelector('.detail-nav-close').addEventListener('click', function(e) {
+    e.preventDefault();
+    overlay.classList.remove('active');
+    history.pushState(null, '', window.location.pathname);
+  });
+
+  overlay.querySelector('.detail-toc').addEventListener('click', function(e) {
+    if (e.target.tagName === 'A' && e.target.getAttribute('data-pid')) {
+      e.preventDefault();
+      showProject(e.target.getAttribute('data-pid'));
+    }
+  });
+
+  window.openDetail = function(pid) {
+    overlay.classList.add('active');
+    showProject(pid);
+  };
+
+  var hash = window.location.hash;
+  if (hash && hash.startsWith('#p')) {
+    window.openDetail(hash.substring(1));
+  }
+})();
+</script>
+
+</body>
+</html>
